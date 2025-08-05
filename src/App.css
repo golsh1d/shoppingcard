@@ -8,6 +8,11 @@ body , * {
 
 .App-container {
   width: 100vw;
+  background-color: #fff;
+}
+
+.App-container-dark{
+  background-color: black;
 }
 
 @media screen and (max-width : 768px) {

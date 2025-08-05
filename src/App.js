@@ -6,5 +6,5 @@ import { useRoutes } from "react-router-dom";
 export default function App() {
   let allRoutes = useRoutes(routes);
 
-  return <>{allRoutes}</>;
+  return <section className="App-container">{allRoutes}</section>;
 }

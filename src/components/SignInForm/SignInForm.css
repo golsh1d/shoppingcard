@@ -1,0 +1,146 @@
+.SignInForm-container{
+    height: min-content;
+    background-color: transparent;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SignInForm-container-dark{
+    background-color: oklch(21% 0.006 285.885);
+}
+
+.SignInForm-title-dark{
+    color: #fff;
+}
+
+.SignInForm-input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+    outline: none;
+}
+
+.SignInForm-input-dark{
+    color: #fff;
+}
+
+.SignInForm-alert{
+    color: #820000;
+    visibility: hidden;
+}
+
+.SignInForm-btn{
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
+}
+
+.SignInForm-btn-dark{
+    color: #fff;
+}
+
+.SignInForm-notif{
+    color: #545454;
+}
+
+.SignInForm-notif-dark{
+    color: #8a8a8a;
+}
+
+.SignInForm-notif-btn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.SignInForm-notif-btn-dark{
+    color: #fff;
+}
+
+@media screen and (max-width : 768px){
+    .SignInForm-container{
+        width: 300px;
+        padding: 8px;
+    }
+
+    .SignInForm-title{
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 24px;
+    }
+    
+    .SignInForm-input{
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .SignInForm-alert{
+        font-size: 10px;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+    
+    .SignInForm-btn{
+        font-size: 12px;
+        padding: 8px;
+        margin-bottom: 12px;
+    }
+
+    .SignInForm-notif{
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    .SignInForm-notif-btn{
+        font-size: 10px;
+        font-weight: 500;
+    }
+}
+
+@media screen and (min-width : 768px){
+    .SignInForm-container{
+        width: 400px;
+        padding: 16px;
+    }
+
+    .SignInForm-title{
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 32px;
+    }
+    
+    .SignInForm-input{
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    
+    .SignInForm-alert{
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+    
+    .SignInForm-btn{
+        font-size: 14px;
+        padding: 8px 16px;
+        margin-bottom: 16px;
+    }
+
+    .SignInForm-notif{
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .SignInForm-notif-btn{
+        font-size: 12px;
+        font-weight: 600;
+    }
+}

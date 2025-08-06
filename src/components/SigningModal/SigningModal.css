@@ -1,0 +1,14 @@
+.SigningModal-container{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: min-content;
+    height: min-content;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #8ABB6C;
+    border-radius: 5px;
+    color: #fff;
+    white-space: nowrap;
+}

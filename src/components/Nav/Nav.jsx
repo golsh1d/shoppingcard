@@ -7,12 +7,14 @@ import SideCard from '../SideCard/SideCard';
 import Overlay from '../Overlay/Overlay';
 import NavAccardeonBtn from '../NavAccardeonBtn/NavAccardeonBtn';
 import NavSimpleBtn from '../NavSimpleBtn/NavSimpleBtn';
+import LogOutModal from '../LogOutModal/LogOutModal';
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded';
 
 export default function Nav() {
   const[isLogIn, setIsLogIn] = useState(false)
   const[sideCardStyle, setSideCardStyle] = useState(null)
   const[overlayStyle, setOverlayStyle] = useState(null)
+  const[isModalShown, setIsModalShown] = useState(false)
 
   let Nav = useRef()
   let NavLink = useRef()
@@ -70,8 +72,17 @@ export default function Nav() {
   }
 
   function deleteCookie() {
+    setIsModalShown(false)
     document.cookie = `username=; expires=Thu, 18 Dec 2000 12:00:00 UTC; path=/`;
-    setIsLogIn(false)
+    setIsLogIn(false) 
+  }
+
+  function showModal() {
+    setIsModalShown(true)
+  }
+
+  function closeModal() {
+    setIsModalShown(false)
   }
 
   useEffect(() => {
@@ -106,11 +117,12 @@ export default function Nav() {
             <div className='Nav-right'>
                 <DarkOrLightMode />
                 {isLogIn ?
-                  <NavAccardeonBtn onLogOut={deleteCookie}/> :
+                  <NavAccardeonBtn onLogOut={showModal}/> :
                   <NavSimpleBtn />
                 }
             </div>
         </nav>
+        {isModalShown && <LogOutModal onCloseModal={closeModal} onNo={closeModal} onYes={deleteCookie}/>}
         <SideCard styleProp={sideCardStyle} />
         <Overlay styleProp={overlayStyle} onOverlay={hideSideCard}/>
     </>

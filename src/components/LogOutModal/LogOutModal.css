@@ -1,0 +1,80 @@
+.LogOutModal-container{
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.LogOutModal-container-dark{
+    background-color: oklch(21% 0.006 285.885);
+    color: #fff;
+}
+
+.LogOutModal-btn-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.LogOutModal-btn{
+    width: 49%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.LogOutModal-yes-btn{
+    background-color: #8ABB6C;
+    color: #fff;
+}
+
+.LogOutModal-no-btn{
+    background-color: #820000;
+    color: #fff;
+}
+
+@media screen and (max-width : 768px){
+    .LogOutModal-container{
+        width: 300px;
+        padding: 12px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .LogOutModal-title{
+        margin-bottom: 12px;
+    }
+
+    .LogOutModal-btn{
+        padding: 5px 0px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width : 768px){
+    .LogOutModal-container{
+        width: 350px;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .LogOutModal-title{
+        margin-bottom: 16px;
+    }
+
+    .LogOutModal-btn{
+        padding: 8px 0px;
+        font-size: 14px;
+    }
+}

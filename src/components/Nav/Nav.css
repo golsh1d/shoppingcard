@@ -28,6 +28,7 @@
 
 .Nav-ul {
     height: 100%;
+    display: flex;
 } 
 
 .Nav-li{
@@ -35,19 +36,24 @@
     border-right: 1px solid #d9d9d9;
 }
 
-.Nav-link {
+.Nav-link, 
+.Nav-shopp-icon {
     height: 100%;
     cursor: pointer;
     color: black;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.Nav-link-dark {
-    color: #fff;
+.Nav-li-shopp-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.Nav-btn {
+.Nav-btn , 
+.Nav-login-info{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,30 +65,13 @@
     color: #000;
 }
 
-.Nav-btn-dark {
-    color: #fff;
-}
-
 .Nav-login-info {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    justify-content: space-between;
     position: relative;
-}
-
-.Nav-user-icon-dark {
-    color: #fff;
-}
-
-.Nav-username-dark,
-.Nav-logout-span-dark {
-    color: #fff;
+    cursor: default;
 }
 
 .Nav-logout-sub-menu{
-    width: min-content;
     height: min-content;
     position: absolute;
     left: 50%;
@@ -90,34 +79,41 @@
     top: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #fff;
     border: 1px solid #d9d9d9;
-    border-radius: 5px;
-    padding: 3px 8px;
+    border-radius: 0px 0px 5px 5px;
     display: none;
-}
-
-.Nav-login-info:hover .Nav-logout-sub-menu{
-    display: flex;
+    cursor: pointer;
 }
 
 .Nav-logout-sub-menu-dark{
    background-color: oklch(21% 0.006 285.885);
+   color: #fff;
 }
 
 .Nav-logout-icon{
     color: #820000;
 }
 
-.Nav-logOut-span{
-    display: block;
+.Nav-chevron{
+    border-left: 1px solid #d9d9d9;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.Nav-btn-dark,
+.Nav-logout-span-dark,
+.Nav-link-dark,
+.Nav-shopp-icon-dark,
+.Nav-login-info-dark {
+    color: #fff;
 }
 
 @media screen and (max-width : 768px){
     .Nav-container {
         padding: 12px;
-        height: 55px;
+        height: 50px;
     }
 
     .Nav-link {
@@ -125,22 +121,15 @@
         font-size: 14px;
         font-weight: 500;
     }
-    
-    .Nav-right-icons-wrapper {
+
+    .Nav-li-shopp-icon {
         padding: 0px 12px;
+        display: flex;
     }
     
-    .Nav-right-dark-icon {
-        width: 18px !important;
-        height: 18px !important;
-    }
-    
-    .Nav-right-light-icon {
-        width: 18px !important;
-        height: 18px !important;
-    }
-    
-    .Nav-btn{
+    .Nav-btn , 
+    .Nav-login-info ,
+    .Nav-logout-sub-menu {
         width: 130px;
         margin-left : 12px;
         font-size: 11px;
@@ -148,33 +137,34 @@
         padding: 3px 8px;
     }
 
-    .Nav-login-info{
-        margin-left: 12px;
+    .Nav-login-info ,
+    .Nav-logout-sub-menu {
+        width: 100px;
+        padding: 3px 5px 3px 8px;
     }
 
     .Nav-logout-sub-menu{
-        font-size: 14px;
-        font-weight: 500;
+        margin-left: 0;
     }
 
-    .Nav-user-icon,
-    .Nav-logout-icon{
+    .Nav-chevron{
+        padding-left: 5px;
+    }
+
+    .Nav-right-dark-icon,
+    .Nav-right-light-icon,
+    .Nav-logout-icon,
+    .Nav-shopp-icon,
+    .Nav-chevron{
         width: 18px !important;
         height: 18px !important;
-    }
-
-    .Nav-username,
-    .Nav-logout-span {
-        margin-left: 4px;
-        font-size: 14px;
-        font-weight: 500;
     }
 }
 
 @media screen and (min-width : 768px){
     .Nav-container {
         padding: 16px;
-        height: 70px;
+        height: 65px;
     }
 
     .Nav-link {
@@ -182,48 +172,42 @@
         font-size: 16px;
         font-weight: 600;
     }
-    
-    .Nav-right-icons-wrapper {
+
+    .Nav-li-shopp-icon{
         padding: 0px 16px;
+        display: none;
     }
     
-    .Nav-right-dark-icon {
-        width: 24px !important;
-        height: 24px !important;
-    }
-    
-    .Nav-right-light-icon {
-        width: 24px !important;
-        height: 24px !important;
-    }
-    
-    .Nav-btn{
+    .Nav-btn , 
+    .Nav-login-info,
+    .Nav-logout-sub-menu{
         width: 150px;
         margin-left : 16px;
         font-weight: 500;
         font-size: 14px;
         padding: 5px 16px;
     }
-
-    .Nav-login-info{
-        margin-left: 16px;
+    
+    .Nav-login-info,
+    .Nav-logout-sub-menu{
+        width: 130px;
+        padding: 5px 7px 5px 10px;
     }
 
     .Nav-logout-sub-menu{
-        font-size: 16px;
-        font-weight: 600;
+        margin-left: 0;
     }
 
-    .Nav-user-icon,
-    .Nav-logout-icon{
+    .Nav-chevron{
+        padding-left: 7px;
+    }
+
+    .Nav-right-dark-icon,
+    .Nav-right-light-icon,    
+    .Nav-logout-icon,
+    .Nav-shopp-icon,
+    .Nav-chevron{
         width: 24px !important;
         height: 24px !important;
-    }
-
-    .Nav-username,
-    .Nav-logout-span {
-        margin-left: 8px;
-        font-size: 16px;
-        font-weight: 600;
     }
 }

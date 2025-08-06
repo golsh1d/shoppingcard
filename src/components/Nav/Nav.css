@@ -48,19 +48,69 @@
     color: #fff;
 }
 
+.Nav-login-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.Nav-user-icon-dark {
+    color: #fff;
+}
+
+.Nav-username-dark,
+.Nav-logout-span-dark {
+    color: #fff;
+}
+
+.Nav-logout-sub-menu{
+    width: min-content;
+    height: min-content;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    padding: 3px 8px;
+    display: none;
+}
+
+.Nav-login-info:hover .Nav-logout-sub-menu{
+    display: flex;
+}
+
+.Nav-logout-sub-menu-dark{
+   background-color: oklch(21% 0.006 285.885);
+}
+
+.Nav-logout-icon{
+    color: #820000;
+}
+
+.Nav-logOut-span{
+    display: block;
+}
+
 @media screen and (max-width : 768px){
     .Nav-container {
-        padding: 8px;
+        padding: 12px;
     }
 
     .Nav-link {
-        padding-right: 8px;
+        padding-right: 12px;
         font-size: 14px;
         font-weight: 500;
     }
     
     .Nav-right-icons-wrapper {
-        padding: 0px 8px;
+        padding: 0px 12px;
     }
     
     .Nav-right-dark-icon {
@@ -75,10 +125,31 @@
     
     .Nav-btn{
         width: 130px;
-        margin-left : 8px;
+        margin-left : 12px;
         font-size: 11px;
         font-weight: 400;
         padding: 3px 8px;
+    }
+
+    .Nav-login-info{
+        margin-left: 12px;
+    }
+
+    .Nav-logout-sub-menu{
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .Nav-user-icon,
+    .Nav-logout-icon{
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .Nav-username {
+        margin-left: 4px;
+        font-size: 14px;
+        font-weight: 500;
     }
 }
 
@@ -113,5 +184,26 @@
         font-weight: 500;
         font-size: 14px;
         padding: 5px 16px;
+    }
+
+    .Nav-login-info{
+        margin-left: 16px;
+    }
+
+    .Nav-logout-sub-menu{
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .Nav-user-icon,
+    .Nav-logout-icon{
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .Nav-username {
+        margin-left: 8px;
+        font-size: 16px;
+        font-weight: 600;
     }
 }

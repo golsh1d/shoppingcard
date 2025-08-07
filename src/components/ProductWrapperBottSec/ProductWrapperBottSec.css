@@ -1,0 +1,24 @@
+.ProductWrapperBottSec-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ProductWrapperBottSec-btn-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width : 768px){
+    .ProductWrapperBottSec-container{
+        height: 45px;
+    }
+}
+
+@media screen and (min-width : 768px){
+    .ProductWrapperBottSec-container{
+        height: 55px;
+    }
+}

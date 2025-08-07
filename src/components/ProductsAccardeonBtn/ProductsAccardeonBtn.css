@@ -8,6 +8,7 @@
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     color: #000;
+    z-index: 5;
 }
 
 .ProductsAccardeonBtn-chevron{

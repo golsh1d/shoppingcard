@@ -55,6 +55,12 @@ export default function ProductsAccardeonBtn() {
             <li className='ProductsAccardeonBtn-li'>
                 <span className='ProductsAccardeonBtn-span'>Shoes</span>
             </li>
+            <li className='ProductsAccardeonBtn-li'>
+                <span className='ProductsAccardeonBtn-span'>Accessories</span>
+            </li>
+            <li className='ProductsAccardeonBtn-li'>
+                <span className='ProductsAccardeonBtn-span'>Belts</span>
+            </li>
         </ul>
     </div>
   )

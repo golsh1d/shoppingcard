@@ -10,6 +10,12 @@
     color: #000;
 }
 
+.NavAccardeonBtn-title{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .NavAccardeonBtn-chevron{
     border-left: 1px solid #d9d9d9;
     transition: all 0.2s ease;
@@ -45,10 +51,10 @@
 @media screen and (max-width : 768px){
     .NavAccardeonBtn-container ,
     .NavAccardeonBtn-logout-sub-menu {
-        width: 100px;
+        width: 130px;
         margin-left : 12px;
-        font-size: 11px;
-        font-weight: 400;
+        font-size: 14px;
+        font-weight: 500;
         padding: 3px 5px 3px 8px;
     }
 
@@ -58,6 +64,10 @@
 
     .NavAccardeonBtn-chevron{
         padding-left: 5px;
+    }
+
+    .NavAccardeonBtn-title{
+        padding-right: 5px;
     }
 
     .NavAccardeonBtn-logout-icon,
@@ -70,10 +80,10 @@
 @media screen and (min-width : 768px){ 
     .NavAccardeonBtn-container ,
     .NavAccardeonBtn-logout-sub-menu{
-        width: 130px;
+        width: 150px;
         margin-left : 16px;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 16px;
         padding: 5px 7px 5px 10px;
     }
 
@@ -83,6 +93,10 @@
 
     .NavAccardeonBtn-chevron{
         padding-left: 7px;
+    }
+
+    .NavAccardeonBtn-title{
+        padding-right: 7px;
     }
    
     .NavAccardeonBtn-logout-icon,

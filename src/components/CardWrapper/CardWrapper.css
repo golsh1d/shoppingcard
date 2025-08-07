@@ -1,0 +1,29 @@
+.CardWrapper{
+    height: 100%;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    padding: 16px;
+}
+
+.CardWrapper-dark{
+    background-color: oklch(21% 0.006 285.885);
+}
+
+@media screen and (max-width : 768px){
+    .CardWrapper{
+        display: none;
+    }
+}
+
+@media screen and (min-width : 768px){
+    .CardWrapper{
+       display: block;
+       width: 250px;
+    }
+}
+
+@media screen and (min-width : 1280px){
+    .CardWrapper{
+       width: 300px;
+    }
+}

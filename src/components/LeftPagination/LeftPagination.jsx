@@ -3,8 +3,12 @@ import './LeftPagination.css'
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import { useEffect , useRef } from 'react';
 
-export default function LeftPagination() {
+export default function LeftPagination({ onLeft }) {
   let leftPagination = useRef()  
+
+  function moveToLeft() {
+    onLeft()
+  }
 
   function getLocalStorage() {
     let webAppereance = localStorage.getItem("mode");
@@ -29,7 +33,7 @@ export default function LeftPagination() {
   }, []);    
 
   return (
-    <div className='LeftPagination-container' ref={leftPagination}>
+    <div className='LeftPagination-container' ref={leftPagination} onClick={moveToLeft}>
         <ChevronLeftRoundedIcon className='LeftPagination-icon'/>
     </div>
   )

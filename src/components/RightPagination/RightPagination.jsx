@@ -3,8 +3,12 @@ import './RightPagination.css'
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import { useEffect , useRef } from 'react';
 
-export default function RightPagination() {
+export default function RightPagination({ onRight }) {
   let rightPagination = useRef()  
+
+  function moveToRight (){
+    onRight()
+  }
   
   function getLocalStorage() {
       let webAppereance = localStorage.getItem("mode");
@@ -29,7 +33,7 @@ export default function RightPagination() {
   }, []);  
   
   return (
-    <div className='RightPagination-container' ref={rightPagination}>
+    <div className='RightPagination-container' ref={rightPagination} onClick={moveToRight}>
         <ChevronRightRoundedIcon className='RightPagination-icon'/>
     </div>
   )

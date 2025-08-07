@@ -2,7 +2,6 @@ import React from 'react'
 import './ProductsWrapper.css'
 import { useEffect , useRef } from 'react';
 import ProductsWrapperTopSec from '../ProductsWrapperTopSec/ProductsWrapperTopSec'
-import ProductWrapperMidSec from '../ProductWrapperMidSec/ProductWrapperMidSec';
 import ProductWrapperBottSec from '../ProductWrapperBottSec/ProductWrapperBottSec';
 
 export default function ProductsWrapper() {
@@ -33,7 +32,6 @@ export default function ProductsWrapper() {
   return (
     <div className='ProductsWrapper' ref={ProductsWrapper}>
         <ProductsWrapperTopSec />
-        <ProductWrapperMidSec />
         <ProductWrapperBottSec />
     </div>
   )

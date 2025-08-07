@@ -47,13 +47,13 @@ export default function ProductsAccardeonBtn() {
 
         <ul className='ProductsAccardeonBtn-sub-menu' ref={categorizeSubMenu}>
             <li className='ProductsAccardeonBtn-li'>
+                <span className='ProductsAccardeonBtn-span'>All</span>
+            </li>
+            <li className='ProductsAccardeonBtn-li'>
                 <span className='ProductsAccardeonBtn-span'>Bags</span>
             </li>
             <li className='ProductsAccardeonBtn-li'>
                 <span className='ProductsAccardeonBtn-span'>Shoes</span>
-            </li>
-            <li className='ProductsAccardeonBtn-li'>
-                <span className='ProductsAccardeonBtn-span'>Accessories</span>
             </li>
         </ul>
     </div>

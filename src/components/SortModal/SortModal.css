@@ -1,0 +1,89 @@
+.SortModal-container{
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.SortModal-container-dark{
+    background-color: oklch(21% 0.006 285.885);
+    color: #fff;
+}
+
+.SortModal-title{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.SortModal-ul{
+    width: 100%;
+    text-align: left;
+}
+
+.SortModal-li{
+    cursor: pointer;
+}
+
+.SortModal-li:not(:last-child){
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.SortModal-span{
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.SortModal-li:hover .SortModal-span{
+    transform: translateX(5px);
+}
+
+@media screen and (max-width : 768px){
+    .SortModal-container{
+        width: 300px;
+        padding: 12px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .SortModal-title{
+        padding-bottom: 12px;
+    }
+
+    .SortModal-li{
+        padding: 12px 0px;
+    }
+
+    .SortModal-li:last-child{
+        padding-bottom: 0px;
+    }
+}
+
+@media screen and (min-width : 768px){
+    .SortModal-container{
+        width: 350px;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .SortModal-title{
+        padding-bottom: 16px;
+    }
+
+    .SortModal-li{
+        padding: 16px 0px;
+    }
+
+    .SortModal-li:last-child{
+        padding-bottom: 0px;
+    }
+}

@@ -7,6 +7,12 @@
     justify-content: space-between;
 }
 
+.ProductsWrapperTopSec-right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 @media screen and (max-width : 768px) {
     .ProductsWrapperTopSec-container {
         padding: 8px;

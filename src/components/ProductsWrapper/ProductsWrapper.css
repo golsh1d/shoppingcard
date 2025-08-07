@@ -1,0 +1,27 @@
+.ProductsWrapper {
+    height: 100%;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+}
+
+.ProductsWrapper-dark {
+    background-color: oklch(21% 0.006 285.885);
+}
+
+@media screen and (max-width : 768px) {
+   .ProductsWrapper {
+      width: 100%;
+   } 
+}
+
+@media screen and (min-width : 768px) {
+   .ProductsWrapper {
+      width: calc(100% - 266px);
+    } 
+}
+
+@media screen and (min-width : 1280px) {
+    .ProductsWrapper {
+      width: calc(100% - 316px);
+   } 
+}

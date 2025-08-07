@@ -1,0 +1,106 @@
+.ProductsAccardeonBtn-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    color: #000;
+}
+
+.ProductsAccardeonBtn-chevron{
+    border-left: 1px solid #d9d9d9;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.ProductsAccardeonBtn-sub-menu{
+    height: min-content;
+    position: absolute;
+    top: 100%;
+    left: -1px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 0px 0px 5px 5px;
+    display: none;
+}
+
+.ProductsAccardeonBtn-li{
+    cursor: pointer;
+}
+
+.ProductsAccardeonBtn-li:not(:last-child){
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.ProductsAccardeonBtn-span{
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.ProductsAccardeonBtn-li:hover .ProductsAccardeonBtn-span{
+    transform: translateX(5px);
+}
+
+.ProductsAccardeonBtn-sub-menu-dark,
+.ProductsAccardeonBtn-container-dark {
+   background-color: oklch(21% 0.006 285.885);
+   color: #fff;
+}
+
+@media screen and (max-width : 768px){
+    .ProductsAccardeonBtn-container ,
+    .ProductsAccardeonBtn-sub-menu {
+        width: 150px;
+        font-size: 11px;
+        font-weight: 400;
+        padding: 3px 5px 3px 8px;
+    }
+
+    .ProductsAccardeonBtn-sub-menu {
+        padding: 0px 5px 0px 8px;
+    }
+
+    .ProductsAccardeonBtn-chevron{
+        padding-left: 5px;
+    }
+
+    .ProductsAccardeonBtn-chevron{
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .ProductsAccardeonBtn-li{
+        padding: 5px 0px;
+    }
+}
+
+@media screen and (min-width : 768px){ 
+    .ProductsAccardeonBtn-container ,
+    .ProductsAccardeonBtn-sub-menu{
+        width: 200px;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 5px 7px 5px 10px;
+    }
+
+    .ProductsAccardeonBtn-sub-menu{
+        padding: 0px 7px 0px 10px;
+    }
+
+    .ProductsAccardeonBtn-chevron{
+        padding-left: 7px;
+    }
+   
+    .ProductsAccardeonBtn-chevron{
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .ProductsAccardeonBtn-li{
+        padding: 7px 0px;
+    }
+}

@@ -53,7 +53,7 @@
     .NavAccardeonBtn-logout-sub-menu {
         width: 130px;
         margin-left : 12px;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 500;
         padding: 3px 5px 3px 8px;
     }
@@ -82,8 +82,8 @@
     .NavAccardeonBtn-logout-sub-menu{
         width: 150px;
         margin-left : 16px;
+        font-size: 18px;
         font-weight: 500;
-        font-size: 16px;
         padding: 5px 7px 5px 10px;
     }
 

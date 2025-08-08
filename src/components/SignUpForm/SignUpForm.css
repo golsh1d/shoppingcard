@@ -72,36 +72,36 @@
     }
 
     .SignUpForm-title{
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 500;
         margin-bottom: 24px;
     }
     
     .SignUpForm-input{
-        font-size: 12px;
+        font-size: 14px;
         margin-bottom: 12px;
     }
     
     .SignUpForm-alert{
-        font-size: 10px;
-        font-weight: 500;
+        font-size: 12px;
+        font-weight: 400;
         margin-bottom: 12px;
     }
     
     .SignUpForm-btn{
-        font-size: 12px;
+        font-size: 14px;
         padding: 8px;
         margin-bottom: 12px;
     }
 
     .SignUpForm-notif{
-        font-size: 10px;
-        font-weight: 500;
+        font-size: 12px;
+        font-weight: 400;
     }
 
     .SignUpForm-notif-btn{
-        font-size: 10px;
-        font-weight: 500;
+        font-size: 12px;
+        font-weight: 400;
     }
 }
 
@@ -112,35 +112,35 @@
     }
 
     .SignUpForm-title{
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 18px;
+        font-weight: 500;
         margin-bottom: 32px;
     }
     
     .SignUpForm-input{
-        font-size: 14px;
+        font-size: 16px;
         margin-bottom: 16px;
     }
     
     .SignUpForm-alert{
-        font-size: 12px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 16px;
     }
     
     .SignUpForm-btn{
-        font-size: 14px;
+        font-size: 16px;
         padding: 8px 16px;
         margin-bottom: 16px;
     }
 
     .SignUpForm-notif{
-        font-size: 12px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 400;
     }
 
     .SignUpForm-notif-btn{
-        font-size: 12px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 400;
     }
 }

@@ -9,7 +9,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: oklch(97% 0 0);
 }
 
 .ProductCard-container:hover{
@@ -43,6 +42,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.ProductCard-title{
+    letter-spacing: 0.01px;
 }
 
 .ProductCard-rate{
@@ -175,14 +178,14 @@
    }
 
    .ProductCard-title{
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 18px;
+        font-weight: 600;
    }
 
    .ProductCard-rate-span,
    .ProductCard-price-span{
-        font-size: 14px;
-        font-weight: 400;
+        font-size: 16px;
+        font-weight: 500;
    }
 
    .ProductCard-rate-icon,
@@ -193,7 +196,7 @@
 
    .ProductCard-des{
         font-size: 12px;
-        font-weight: 400;
+        font-weight: 500;
         margin-bottom: 12px;
    }
 

@@ -30,6 +30,6 @@ export default function NavSimpleBtn() {
   }, []);  
 
   return (
-    <Link className='NavSimpleBtn-container' to="./signing" ref={NavBtn}>SignUp / SignIn</Link>
+    <Link className='NavSimpleBtn-container' to="./signing" ref={NavBtn}>SignUp/SignIn</Link>
   )
 }

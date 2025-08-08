@@ -5,7 +5,7 @@ import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { useEffect , useRef } from 'react';
 
-export default function ProductCard() {
+export default function ProductCard({id , title , img , rate , price , des}) {
   let cardContainer = useRef()  
   let dollarIcon = useRef()  
   let cardDes = useRef()  
@@ -39,22 +39,22 @@ export default function ProductCard() {
   return (
     <div className='ProductCard-container' ref={cardContainer}>
         <div className='ProductCard-img-wrapper'>
-            <img src="./imgs/bag1.webp" alt="product" className='ProductCard-img'/>
+            <img src={img} alt="product" className='ProductCard-img'/>
         </div>
         <div className='ProductCard-detail'>
             <div className='ProductCard-head'>
-                <div className='ProductCard-title'>Bag1</div>
+                <div className='ProductCard-title'>{title}</div>
                 <div className='ProductCard-rate'>
-                    <span className='ProductCard-rate-span'>4.5</span>
+                    <span className='ProductCard-rate-span'>{rate}</span>
                     <StarRoundedIcon className='ProductCard-rate-icon'/>
                 </div>
             </div>
             <div className='ProductCard-des' ref={cardDes}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat architecto earum provident illo, dignissimos quo officiis eaque quas incidunt ex.
+                {des}           
             </div>
             <div className='ProductCard-icon-wrapper'>
                 <div className='ProductCard-price'>
-                    <span className='ProductCard-price-span'>25</span>
+                    <span className='ProductCard-price-span'>{price}</span>
                     <MonetizationOnRoundedIcon className='ProductCard-dollar-icon' ref={dollarIcon}/>
                 </div>
                 <div className='ProductCard-btn'>

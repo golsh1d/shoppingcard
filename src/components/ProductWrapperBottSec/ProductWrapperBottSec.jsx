@@ -12,7 +12,7 @@ import 'swiper/css';
 import { useRef , useState } from 'react'
 
 
-export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTrigger, shoesReorderTrigger, accReorderTrigger, beltsReorderTrigger}) {
+export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTrigger, shoesReorderTrigger, accReorderTrigger, beltsReorderTrigger, setPopularSortTrigger, setEarliestSortTrigger, setLatestSortTrigger}) {
   const [allProductsInfo , setAllProductsInfo] = useState([
     {id : 1 , category : "bag" , count : 1 , title : "Arkatella" , img : "./imgs/bag1.jpg" , rate : "4.5" , price : "1000" , des : `A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.`} ,
     {id : 2 , category : "bag" , count : 2 , title : "Arko" , img : "./imgs/bag2.jpg" , rate : "4" , price : "2000" , des : `Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.`} ,
@@ -70,6 +70,24 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       swiperRef.current.slideNext()
     }
   }  
+
+  useEffect(() => {
+    let popularProducts = [...finalProductsInfo].sort((a , b) => b.rate - a.rate)
+
+    setFinalProductsInfo(popularProducts)
+  } , [setPopularSortTrigger])
+
+  useEffect(() => {
+    let earliestProducts = [...finalProductsInfo].sort((a , b) => b.id - a.id)
+
+    setFinalProductsInfo(earliestProducts)
+  } , [setEarliestSortTrigger])
+
+  useEffect(() => {
+    let latestProducts = [...finalProductsInfo].sort((a , b) => a.id - b.id)
+
+    setFinalProductsInfo(latestProducts)
+  } , [setLatestSortTrigger])
 
   useEffect(() => {
     setFinalProductsInfo(allProductsInfo)

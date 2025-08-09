@@ -5,7 +5,7 @@ import SwapVertRoundedIcon from '@mui/icons-material/SwapVertRounded';
 import SortModal from '../SortModal/SortModal';
 import Overlay from '../Overlay/Overlay';
 
-export default function ProductsSortBtn() {
+export default function ProductsSortBtn({onSortPopular, onSortEarliest, onSortLatest }) {
   const[isModalShown , setIsModalShown] = useState(false)  
   const[overlayStyle, setOverlayStyle] = useState(null) 
   let sortBtn = useRef()  
@@ -28,6 +28,22 @@ export default function ProductsSortBtn() {
     setIsModalShown(false)
     setOverlayStyle({display : "none"})
   }
+
+  function sortPopular() {
+    onSortPopular()
+    hideModal()
+  }
+
+  function sortEarliest() {
+    onSortEarliest()
+    hideModal()
+  }
+
+  function sortLatest() {
+    onSortLatest()
+    hideModal()
+  }
+
   
   useEffect(() => {
     const handleStorageUpdate = () => {
@@ -46,7 +62,7 @@ export default function ProductsSortBtn() {
      <div className='ProductsSortBtn-container' ref={sortBtn} onClick={showModal}>
          <SwapVertRoundedIcon className='ProductsSortBtn-icon'/>
      </div>
-     {isModalShown && <SortModal />}
+     {isModalShown && <SortModal  onPopularLi={sortPopular} onEarliestLi={sortEarliest} onLatestLi={sortLatest}/>}
      <Overlay styleProp={overlayStyle} onOverlay={hideModal}/>
     </>
   )

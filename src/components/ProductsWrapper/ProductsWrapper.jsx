@@ -10,6 +10,10 @@ export default function ProductsWrapper() {
   const[shoesReorderTrigger,setShoesReorderTrigger] = useState(0)
   const[accReorderTrigger,setAccReorderTrigger] = useState(0)
   const[beltsReorderTrigger,setBeltsReorderTrigger] = useState(0)  
+  const[popularSortTrigger,setPopularSortTrigger] = useState(0)  
+  const[earliestSortTrigger,setEarliestSortTrigger] = useState(0)  
+  const[latestSortTrigger,setLatestSortTrigger] = useState(0)  
+ 
   let ProductsWrapper = useRef()  
 
   function getLocalStorage() {
@@ -40,6 +44,19 @@ export default function ProductsWrapper() {
     setBeltsReorderTrigger(prev => prev + 1)
   }
 
+  function handlePopularSort() {
+    setPopularSortTrigger(prev => prev + 1)
+  }
+
+  function handleEarliestSort() {
+    setEarliestSortTrigger(prev => prev + 1)
+  }
+
+  function handleLatestSort() {
+    setLatestSortTrigger(prev => prev + 1)
+  }
+
+
   useEffect(() => {
     const handleStorageUpdate = () => {
       getLocalStorage();
@@ -56,8 +73,8 @@ export default function ProductsWrapper() {
 
   return (
     <div className='ProductsWrapper' ref={ProductsWrapper}>
-        <ProductsWrapperTopSec onAllReorder={handleAllReorder} onBagsReorder={handleBagsReorder} onShoesReorder={handleShoesReorder} onAccReorder={handleAccReorder} onBeltReorder={handleBeltReorder}  />
-        <ProductWrapperBottSec allReorderTrigger={allReorderTrigger} bagsReorderTrigger={bagsReorderTrigger} shoesReorderTrigger={shoesReorderTrigger} accReorderTrigger={accReorderTrigger} beltsReorderTrigger={beltsReorderTrigger} />
+        <ProductsWrapperTopSec onAllReorder={handleAllReorder} onBagsReorder={handleBagsReorder} onShoesReorder={handleShoesReorder} onAccReorder={handleAccReorder} onBeltReorder={handleBeltReorder}  onSortPopularProducts={handlePopularSort} onSortEarliestProducts={handleEarliestSort}  onSortLatestProducts={handleLatestSort}/>
+        <ProductWrapperBottSec allReorderTrigger={allReorderTrigger} bagsReorderTrigger={bagsReorderTrigger} shoesReorderTrigger={shoesReorderTrigger} accReorderTrigger={accReorderTrigger} beltsReorderTrigger={beltsReorderTrigger}  setPopularSortTrigger={popularSortTrigger} setEarliestSortTrigger={earliestSortTrigger} setLatestSortTrigger={latestSortTrigger}/>
     </div>
   )
 }

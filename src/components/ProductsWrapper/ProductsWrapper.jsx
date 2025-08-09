@@ -13,6 +13,7 @@ export default function ProductsWrapper() {
   const[popularSortTrigger,setPopularSortTrigger] = useState(0)  
   const[earliestSortTrigger,setEarliestSortTrigger] = useState(0)  
   const[latestSortTrigger,setLatestSortTrigger] = useState(0)  
+  const[searchContent,setSearchContent] = useState("")  
  
   let ProductsWrapper = useRef()  
 
@@ -56,6 +57,9 @@ export default function ProductsWrapper() {
     setLatestSortTrigger(prev => prev + 1)
   }
 
+  function handleSearch(productTitle) {
+    setSearchContent(productTitle)
+  }
 
   useEffect(() => {
     const handleStorageUpdate = () => {
@@ -73,8 +77,8 @@ export default function ProductsWrapper() {
 
   return (
     <div className='ProductsWrapper' ref={ProductsWrapper}>
-        <ProductsWrapperTopSec onAllReorder={handleAllReorder} onBagsReorder={handleBagsReorder} onShoesReorder={handleShoesReorder} onAccReorder={handleAccReorder} onBeltReorder={handleBeltReorder}  onSortPopularProducts={handlePopularSort} onSortEarliestProducts={handleEarliestSort}  onSortLatestProducts={handleLatestSort}/>
-        <ProductWrapperBottSec allReorderTrigger={allReorderTrigger} bagsReorderTrigger={bagsReorderTrigger} shoesReorderTrigger={shoesReorderTrigger} accReorderTrigger={accReorderTrigger} beltsReorderTrigger={beltsReorderTrigger}  setPopularSortTrigger={popularSortTrigger} setEarliestSortTrigger={earliestSortTrigger} setLatestSortTrigger={latestSortTrigger}/>
+        <ProductsWrapperTopSec onAllReorder={handleAllReorder} onBagsReorder={handleBagsReorder} onShoesReorder={handleShoesReorder} onAccReorder={handleAccReorder} onBeltReorder={handleBeltReorder}  onSortPopularProducts={handlePopularSort} onSortEarliestProducts={handleEarliestSort}  onSortLatestProducts={handleLatestSort} onSearchInProducts={handleSearch}/>
+        <ProductWrapperBottSec allReorderTrigger={allReorderTrigger} bagsReorderTrigger={bagsReorderTrigger} shoesReorderTrigger={shoesReorderTrigger} accReorderTrigger={accReorderTrigger} beltsReorderTrigger={beltsReorderTrigger}  popularSortTrigger={popularSortTrigger} earliestSortTrigger={earliestSortTrigger} latestSortTrigger={latestSortTrigger} searchContent={searchContent}/>
     </div>
   )
 }

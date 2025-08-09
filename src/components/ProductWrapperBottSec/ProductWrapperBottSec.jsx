@@ -11,8 +11,10 @@ import 'swiper/css';
 
 import { useRef , useState } from 'react'
 
+import SearchOffIcon from '@mui/icons-material/SearchOff';
 
-export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTrigger, shoesReorderTrigger, accReorderTrigger, beltsReorderTrigger, setPopularSortTrigger, setEarliestSortTrigger, setLatestSortTrigger}) {
+
+export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTrigger, shoesReorderTrigger, accReorderTrigger, beltsReorderTrigger, popularSortTrigger, earliestSortTrigger, latestSortTrigger, searchContent}) {
   const [allProductsInfo , setAllProductsInfo] = useState([
     {id : 1 , category : "bag" , count : 1 , title : "Arkatella" , img : "./imgs/bag1.jpg" , rate : "4.5" , price : "1000" , des : `A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.`} ,
     {id : 2 , category : "bag" , count : 2 , title : "Arko" , img : "./imgs/bag2.jpg" , rate : "4" , price : "2000" , des : `Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.`} ,
@@ -56,6 +58,7 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     {id : 40 , category : "belt" , count : 3 , title : "Isildor" , img : "./imgs/belt10.jpg" , rate : "3.8" , price : "2000" , des : `This classic black leather belt is a must-have foundation piece.Crafted from genuine leather with a matte silver buckle, it pairs with everything.From high-waisted jeans to structured blazers, it adds sleek definition.A versatile piece that balances form and function.Timeless, reliable, and built to last.`} ,
   ]) 
   const[finalProductsInfo , setFinalProductsInfo] = useState([])
+  const[swiperIsShown , setSwiperIsShown] = useState(null)
 
   let swiperRef = useRef(null)
 
@@ -72,25 +75,46 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
   }  
 
   useEffect(() => {
+    let searchedProduct = []
+
+    allProductsInfo.map(obj => {
+      if(obj.title.toLowerCase() === searchContent.trim().toLowerCase()) {
+        searchedProduct.push(obj)
+        setSwiperIsShown(true)
+      } 
+    })
+
+    if(searchedProduct.length === 0){
+      setSwiperIsShown(false)
+    }
+
+    setFinalProductsInfo(searchedProduct)
+  } , [searchContent])
+
+  useEffect(() => {
     let popularProducts = [...finalProductsInfo].sort((a , b) => b.rate - a.rate)
 
     setFinalProductsInfo(popularProducts)
-  } , [setPopularSortTrigger])
+    setSwiperIsShown(true)
+  } , [popularSortTrigger])
 
   useEffect(() => {
     let earliestProducts = [...finalProductsInfo].sort((a , b) => b.id - a.id)
 
     setFinalProductsInfo(earliestProducts)
-  } , [setEarliestSortTrigger])
+    setSwiperIsShown(true)
+  } , [earliestSortTrigger])
 
   useEffect(() => {
     let latestProducts = [...finalProductsInfo].sort((a , b) => a.id - b.id)
 
     setFinalProductsInfo(latestProducts)
-  } , [setLatestSortTrigger])
+    setSwiperIsShown(true)
+  } , [latestSortTrigger])
 
   useEffect(() => {
     setFinalProductsInfo(allProductsInfo)
+    setSwiperIsShown(true)
   } , [])
 
   useEffect(() => {
@@ -101,6 +125,7 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       }
     })
     setFinalProductsInfo(allBelt)
+    setSwiperIsShown(true)
   } , [beltsReorderTrigger])
 
   useEffect(() => {
@@ -111,6 +136,7 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       }
     })
     setFinalProductsInfo(allAcc)
+    setSwiperIsShown(true)
   } , [accReorderTrigger])
 
   useEffect(() => {
@@ -121,6 +147,7 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       }
     })
     setFinalProductsInfo(allShoes)
+    setSwiperIsShown(true)
   } , [shoesReorderTrigger])
 
   useEffect(() => {
@@ -131,15 +158,18 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       }
     })
     setFinalProductsInfo(allBags)
+    setSwiperIsShown(true)
   } , [bagsReorderTrigger])
 
   useEffect(() => {
     setFinalProductsInfo(allProductsInfo)
+    setSwiperIsShown(true)
   } , [allReorderTrigger])
 
   return (
     <>
     <div className='ProductWrapperBottSec-container'>
+      {swiperIsShown ?
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         cssMode={true}
@@ -174,7 +204,12 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
         </SwiperSlide>
       ))}
 
-      </Swiper>
+      </Swiper> : 
+      <div className='ProductWrapperBottSec-searchOff-container'>
+        <span className='ProductWrapperBottSec-span'>No item found!</span>
+        <SearchOffIcon className='ProductWrapperBottSec-icon'/>
+      </div>
+      }
     </div>
 
     <div className='ProductWrapperBottSec-button-container'>

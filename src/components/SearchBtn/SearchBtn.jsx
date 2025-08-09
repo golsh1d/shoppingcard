@@ -3,7 +3,7 @@ import './SearchBtn.css'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useEffect , useRef , useState } from 'react';
 
-export default function SearchBtn() {
+export default function SearchBtn({onSearch}) {
   const[searchInputState , setSearchInputState] = useState("")  
   let searchBtn = useRef()
   let searchInput = useRef()
@@ -16,6 +16,18 @@ export default function SearchBtn() {
     } else {
         searchBtn.current.classList.remove("SearchBtn-container-dark");
         searchInput.current.classList.remove("SearchBtn-input-dark");
+    }
+  }
+
+  function searchIconClicked(searchInputState) {
+    onSearch(searchInputState)
+    setSearchInputState('')
+  }
+
+  function inputClicked(event , searchInputState) {
+    if(event.key === "Enter") {
+      onSearch(searchInputState)
+      setSearchInputState('')
     }
   }
       
@@ -33,8 +45,8 @@ export default function SearchBtn() {
 
   return (
     <div className='SearchBtn-container' ref={searchBtn}>
-        <input type="text" className='SearchBtn-input' ref={searchInput} value={searchInputState} onChange={(event) => {setSearchInputState(event.target.value)}}/>
-        <SearchRoundedIcon className='SearchBtn-icon'/>
+        <input type="text" className='SearchBtn-input' ref={searchInput} value={searchInputState} onChange={(event) => {setSearchInputState(event.target.value)}} onKeyPress={(event) =>inputClicked(event , searchInputState)}/>
+        <SearchRoundedIcon className='SearchBtn-icon' onClick={() => searchIconClicked(searchInputState)}/>
     </div>
   )
 }

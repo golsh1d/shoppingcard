@@ -3,7 +3,7 @@ import './ProductsAccardeonBtn.css'
 import { useEffect , useRef , useState} from 'react'
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 
-export default function ProductsAccardeonBtn() {
+export default function ProductsAccardeonBtn({onAllLi, onBagsLi, onShoesLi, onAccLi, onBeltLi}) {
   let categorizeBtn = useRef()  
   let categorizeSubMenu = useRef()  
 
@@ -28,6 +28,27 @@ export default function ProductsAccardeonBtn() {
     categorizeBtn.current.style.borderRadius = "5px"
   }
 
+  function AllLiClicked() {
+    onAllLi()
+  }
+
+  function BagsLiClicked() {
+    onBagsLi()
+  }
+
+  function ShoesLiClicked() {
+    onShoesLi()
+  }
+
+  function AccLiClicked() {
+    onAccLi()
+  }
+
+  function BeltLiClicked() {
+    onBeltLi()
+  }
+
+
   useEffect(() => {
     const handleStorageUpdate = () => {
         getLocalStorage()
@@ -46,19 +67,19 @@ export default function ProductsAccardeonBtn() {
         <ExpandMoreRoundedIcon className='ProductsAccardeonBtn-chevron' onClick={showSubMenu}/>
 
         <ul className='ProductsAccardeonBtn-sub-menu' ref={categorizeSubMenu}>
-            <li className='ProductsAccardeonBtn-li'>
+            <li className='ProductsAccardeonBtn-li' onClick={AllLiClicked}>
                 <span className='ProductsAccardeonBtn-span'>All</span>
             </li>
-            <li className='ProductsAccardeonBtn-li'>
+            <li className='ProductsAccardeonBtn-li' onClick={BagsLiClicked}>
                 <span className='ProductsAccardeonBtn-span'>Bags</span>
             </li>
-            <li className='ProductsAccardeonBtn-li'>
+            <li className='ProductsAccardeonBtn-li' onClick={ShoesLiClicked}>
                 <span className='ProductsAccardeonBtn-span'>Shoes</span>
             </li>
-            <li className='ProductsAccardeonBtn-li'>
+            <li className='ProductsAccardeonBtn-li' onClick={AccLiClicked}>
                 <span className='ProductsAccardeonBtn-span'>Accessories</span>
             </li>
-            <li className='ProductsAccardeonBtn-li'>
+            <li className='ProductsAccardeonBtn-li' onClick={BeltLiClicked}>
                 <span className='ProductsAccardeonBtn-span'>Belts</span>
             </li>
         </ul>

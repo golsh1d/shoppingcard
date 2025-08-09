@@ -12,7 +12,7 @@ import 'swiper/css';
 import { useRef , useState } from 'react'
 
 
-export default function ProductWrapperBottSec() {
+export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTrigger, shoesReorderTrigger, accReorderTrigger, beltsReorderTrigger}) {
   const [allProductsInfo , setAllProductsInfo] = useState([
     {id : 1 , category : "bag" , count : 1 , title : "Arkatella" , img : "./imgs/bag1.jpg" , rate : "4.5" , price : "1000" , des : `A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.`} ,
     {id : 2 , category : "bag" , count : 2 , title : "Arko" , img : "./imgs/bag2.jpg" , rate : "4" , price : "2000" , des : `Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.`} ,
@@ -54,7 +54,7 @@ export default function ProductWrapperBottSec() {
     {id : 38 , category : "belt" , count : 1 , title : "Elara" , img : "./imgs/belt8.jpg" , rate : "4" , price : "2700" , des : `This metallic belt delivers shine and sophistication in equal measure.Whether worn over a black dress or with denim, it demands attention.The reflective finish adds just the right amount of glam.A go-to accessory for parties, holidays, or standout looks.Turn every outfit into a statement.`} ,
     {id : 39 , category : "belt" , count : 2 , title : "Selene" , img : "./imgs/belt9.jpg" , rate : "3.5" , price : "2800" , des : `Bring color into your wardrobe with this vibrant skinny belt.Designed to add a pop of personality to neutral outfits.Its slim shape is perfect for cinching dresses or styling trousers.An easy way to experiment with color without going overboard.Fun, fashionable, and full of energy`} ,
     {id : 40 , category : "belt" , count : 3 , title : "Isildor" , img : "./imgs/belt10.jpg" , rate : "3.8" , price : "2000" , des : `This classic black leather belt is a must-have foundation piece.Crafted from genuine leather with a matte silver buckle, it pairs with everything.From high-waisted jeans to structured blazers, it adds sleek definition.A versatile piece that balances form and function.Timeless, reliable, and built to last.`} ,
-  ])
+  ]) 
   const[finalProductsInfo , setFinalProductsInfo] = useState([])
 
   let swiperRef = useRef(null)
@@ -74,6 +74,50 @@ export default function ProductWrapperBottSec() {
   useEffect(() => {
     setFinalProductsInfo(allProductsInfo)
   } , [])
+
+  useEffect(() => {
+    let allBelt = []
+    allProductsInfo.map(obj => {
+      if(obj.category === "belt") {
+        allBelt.push(obj)
+      }
+    })
+    setFinalProductsInfo(allBelt)
+  } , [beltsReorderTrigger])
+
+  useEffect(() => {
+    let allAcc = []
+    allProductsInfo.map(obj => {
+      if(obj.category === "acc") {
+        allAcc.push(obj)
+      }
+    })
+    setFinalProductsInfo(allAcc)
+  } , [accReorderTrigger])
+
+  useEffect(() => {
+    let allShoes = []
+    allProductsInfo.map(obj => {
+      if(obj.category === "shoe") {
+        allShoes.push(obj)
+      }
+    })
+    setFinalProductsInfo(allShoes)
+  } , [shoesReorderTrigger])
+
+  useEffect(() => {
+    let allBags = []
+    allProductsInfo.map(obj => {
+      if(obj.category === "bag") {
+        allBags.push(obj)
+      }
+    })
+    setFinalProductsInfo(allBags)
+  } , [bagsReorderTrigger])
+
+  useEffect(() => {
+    setFinalProductsInfo(allProductsInfo)
+  } , [allReorderTrigger])
 
   return (
     <>

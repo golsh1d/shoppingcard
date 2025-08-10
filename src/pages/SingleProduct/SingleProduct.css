@@ -1,0 +1,20 @@
+.SingleProduct-main-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width : 768px){
+    .SingleProduct-main-container{
+        height: calc(100vh - 55px);
+        padding: 12px;
+    }
+}
+
+@media screen and (min-width : 768px){
+    .SingleProduct-main-container{
+       height: calc(100vh - 65px);
+       padding: 16px; 
+    }
+}

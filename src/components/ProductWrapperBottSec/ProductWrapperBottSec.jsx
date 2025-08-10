@@ -80,15 +80,17 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     allProductsInfo.map(obj => {
       if(obj.title.toLowerCase() === searchContent.trim().toLowerCase()) {
         searchedProduct.push(obj)
-        setSwiperIsShown(true)
       } 
     })
-
+    
     if(searchedProduct.length === 0){
       setSwiperIsShown(false)
+    } else {
+      setFinalProductsInfo(searchedProduct)
+      setSwiperIsShown(true)
+
     }
 
-    setFinalProductsInfo(searchedProduct)
   } , [searchContent])
 
   useEffect(() => {
@@ -195,14 +197,15 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
             slidesPerView : 4,
           } 
         }}
-        loop={true}
       >
 
-      {finalProductsInfo.map(obj => (
-        <SwiperSlide>
+      {
+        finalProductsInfo.map(obj => (
+        <SwiperSlide >
           <ProductCard {...obj} key={obj.id}/>
         </SwiperSlide>
-      ))}
+        ))
+      }
 
       </Swiper> : 
       <div className='ProductWrapperBottSec-searchOff-container'>

@@ -4,6 +4,7 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { useEffect , useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProductCard({id , title , img , rate , price , des}) {
   let cardContainer = useRef()  
@@ -37,7 +38,7 @@ export default function ProductCard({id , title , img , rate , price , des}) {
   }, []);    
 
   return (
-    <div className='ProductCard-container' ref={cardContainer}>
+    <Link to={`/singleProduct/${id}`} className='ProductCard-container' ref={cardContainer}>
         <div className='ProductCard-img-wrapper'>
             <img src={img} alt="product" className='ProductCard-img'/>
         </div>
@@ -62,6 +63,6 @@ export default function ProductCard({id , title , img , rate , price , des}) {
                 </div>
             </div>
         </div>
-    </div>
+    </Link>
   )
 }

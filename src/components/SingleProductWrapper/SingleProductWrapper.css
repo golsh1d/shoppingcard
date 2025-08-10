@@ -56,6 +56,8 @@
     outline: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Nata Sans", sans-serif;
+
 }
 
 .SingleProductWrapper-des{
@@ -84,6 +86,7 @@
 
 .SingleProductWrapper-swiper-wrapper{
     width: 100%;
+    position: ;
 }
 
 .SingleProductWrapper-slide-img-wrapper{
@@ -96,6 +99,10 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.mySwiper-custom{
+    padding-bottom: 30px;
 }
 
 @media screen and (max-width : 768px) {
@@ -136,7 +143,7 @@
    .SingleProductWrapper-btn{
       padding : 5px 0px;
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 500; 
    }
 
    .SingleProductWrapper-des{
@@ -174,7 +181,7 @@
     } 
 
     .SingleProductWrapper-product-info {
-      height: calc(100% / 1.4);
+      height: calc(100% / 1.5);
       flex-direction: column-reverse;
    }
 
@@ -186,34 +193,34 @@
    }
 
     .SingleProductWrapper-title{
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 500;
     }
 
     .SingleProductWrapper-rate-span,
     .SingleProductWrapper-price-span{
-      font-size: 16px;
-      font-weight: 500;  
+      font-size: 14px;
+      font-weight: 400;  
     }
 
     .SingleProductWrapper-rate-icon,
     .SingleProductWrapper-dollar-icon{
-      width : 19px !important;
-      height : 19px !important;
+      width : 16px !important;
+      height : 16px !important;
     }
 
     .SingleProductWrapper-btn{
-      padding : 8px 0px;
-      font-size: 18px;
+      padding : 5px 0px;
+      font-size: 16px;
       font-weight: 500;
     }
 
     .SingleProductWrapper-des{
       height: 40px;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 400;
-      line-height: 16.8px;
-      max-height: 33.6px;
+      line-height: 15px;
+      max-height: 30px;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -231,7 +238,7 @@
    }
     
    .SingleProductWrapper-swiper-wrapper{
-      height: calc(100% - (100% / 1.4));
+      height: calc(100% - (100% / 1.5));
       padding-top: 12px;
    }
 }
@@ -262,6 +269,29 @@
    .SingleProductWrapper-img{
       object-fit: fill;
    }
+
+   .SingleProductWrapper-title{
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .SingleProductWrapper-rate-span,
+    .SingleProductWrapper-price-span{
+      font-size: 16px;
+      font-weight: 500;  
+    }
+
+    .SingleProductWrapper-rate-icon,
+    .SingleProductWrapper-dollar-icon{
+      width : 19px !important;
+      height : 19px !important;
+    }
+
+    .SingleProductWrapper-btn{
+      padding : 8px 0px;
+      font-size: 18px;
+      font-weight: 500;
+    }
     
     .SingleProductWrapper-des{
       height: 150px;

@@ -5,6 +5,7 @@
     transition: all 0.2s ease;
     border-radius: 5px;
     background-color: #fff;
+    color: #000;
     display: flex;
     flex-direction: column;
     align-items: center;

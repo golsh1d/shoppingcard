@@ -40,6 +40,7 @@
     background-color: transparent;
     border: 1px solid #d9d9d9;
     cursor: pointer;
+    font-family: "Nata Sans", sans-serif;
 }
 
 .SignInForm-btn-dark{

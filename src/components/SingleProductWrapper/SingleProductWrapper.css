@@ -318,3 +318,78 @@
       padding-top: 16px;
    }
 }
+
+@media screen and (min-width : 1536px) {
+    .SingleProductWrapper {
+      width: calc(100% - 316px);
+   } 
+
+   .SingleProductWrapper-product-info {
+      height: calc(100% / 1.6);
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+   .SingleProductWrapper-left-section{
+      width: 70%;
+      height: 100%;
+      margin-right: 16px;
+    }
+
+    .SingleProductWrapper-right-section{
+      width: 30%;
+      height: 100%;
+   }
+
+   .SingleProductWrapper-img{
+      object-fit: fill;
+   }
+
+   .SingleProductWrapper-title{
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .SingleProductWrapper-rate-span,
+    .SingleProductWrapper-price-span{
+      font-size: 18px;
+      font-weight: 500;  
+    }
+
+    .SingleProductWrapper-rate-icon,
+    .SingleProductWrapper-dollar-icon{
+      width : 22px !important;
+      height : 22px !important;
+    }
+
+    .SingleProductWrapper-btn{
+      padding : 10px 0px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .SingleProductWrapper-des{
+      height: 170px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 19.2px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 9;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+    }
+
+    .SingleProductWrapper-des:hover{  
+      overflow: visible;
+      height: min-content;
+      max-height: none;
+      -webkit-line-clamp: unset;
+    }
+
+    .SingleProductWrapper-swiper-wrapper{
+      height: calc(100% - (100% / 1.6));
+      padding-top: 16px;
+   }
+}

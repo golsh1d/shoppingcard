@@ -6,7 +6,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { useEffect , useRef , useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ProductCard({id , title , img , rate , price , des, onLogIn}) {
+export default function ProductCard({id , title , img , rate , price , des, count, onLogIn, onAdd}) {
 
   let cardContainer = useRef()  
   let dollarIcon = useRef()  
@@ -22,7 +22,7 @@ export default function ProductCard({id , title , img , rate , price , des, onLo
           cardContainer.current.classList.remove("ProductCard-container-dark");
           dollarIcon.current.classList.remove("ProductCard-dollar-icon-dark");
           cardDes.current.classList.remove("ProductCard-des-dark");
-  }}
+  }} 
 
   function getCookie(name) {
     const cookies = document.cookie.split(';')
@@ -34,31 +34,40 @@ export default function ProductCard({id , title , img , rate , price , des, onLo
     }
   }
 
-  function checkIsLogin() {
+  function checkIsLogin(productInfo) {
     const username = getCookie('username')
     if(username) {
         onLogIn(true)
+        onAdd(productInfo)
     } else {
         onLogIn(false)
     }
   }
 
   function addBtnClicked() {
-    checkIsLogin()
+    if (id && title && price && count) {
+        let productInfo = {
+            productID : id,
+            productTitle : title,
+            productPrice : price,
+            productCount : count
+        }
+        checkIsLogin(productInfo)
+    }
   }
     
   useEffect(() => {
-      const handleStorageUpdate = () => {
+    const handleStorageUpdate = () => {
         getLocalStorage();
-      };
+    };
     
-      getLocalStorage();
+    getLocalStorage();
     
-      window.addEventListener("lsUpdated", handleStorageUpdate);
+    window.addEventListener("lsUpdated", handleStorageUpdate);
     
-      return () => {
+    return () => {
         window.removeEventListener("lsUpdated", handleStorageUpdate);
-      };
+    };
   }, []);    
 
   return (

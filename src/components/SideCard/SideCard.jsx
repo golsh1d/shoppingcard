@@ -1,9 +1,10 @@
 import React from 'react'
 import './SideCard.css'
-import { useEffect , useRef } from 'react';
+import { useEffect , useRef , useState} from 'react';
 import Card from '../Card/Card';
 
-export default function SideCard({ styleProp }) {
+export default function SideCard({ styleProp , productInfos }) {
+  const [mainProductInfo , setMainProductInfo] = useState([])  
 
   let sideCard = useRef()
 
@@ -29,10 +30,14 @@ export default function SideCard({ styleProp }) {
         window.removeEventListener("lsUpdated", handleStorageUpdate);
     };
   }, []);
+
+  useEffect(() => {
+    setMainProductInfo(productInfos)
+  } , [productInfos])
   
   return (
     <nav className='SideCard-container' ref={sideCard} style={{ ...styleProp }}>
-      <Card />
+      <Card mainProductInfo={mainProductInfo}/>
     </nav>
   )
 }

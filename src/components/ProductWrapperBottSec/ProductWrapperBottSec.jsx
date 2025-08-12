@@ -17,7 +17,7 @@ import { useRef , useState } from 'react'
 import SearchOffIcon from '@mui/icons-material/SearchOff';
 
 
-export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTrigger, shoesReorderTrigger, accReorderTrigger, beltsReorderTrigger, popularSortTrigger, earliestSortTrigger, latestSortTrigger, searchContent}) {
+export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTrigger, shoesReorderTrigger, accReorderTrigger, beltsReorderTrigger, popularSortTrigger, earliestSortTrigger, latestSortTrigger, searchContent, onAddParent}) {
   const [allProductsInfo , setAllProductsInfo] = useState([
     {id : 1 , category : "bag" , count : 1 , title : "Arkatella" , img : `${process.env.PUBLIC_URL}/imgs/bag1.jpg` , rate : "4.5" , price : "1000" , des : `A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.`} ,
     {id : 2 , category : "bag" , count : 2 , title : "Arko" , img : `${process.env.PUBLIC_URL}/imgs/bag2.jpg` , rate : "4" , price : "2000" , des : `Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.`} ,
@@ -91,6 +91,10 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       setIsLogIn(false)
       setOverlayStyle({display : "block"})
     }
+  }
+
+  function addToCard(productInfo) {
+    onAddParent(productInfo)
   }
 
   useEffect(() => {
@@ -221,7 +225,7 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       {
         finalProductsInfo.map(obj => (
         <SwiperSlide >
-          <ProductCard {...obj} key={obj.id} onLogIn={userLogIn}/>
+          <ProductCard {...obj} key={obj.id} onLogIn={userLogIn} onAdd={addToCard}/>
         </SwiperSlide>
         ))
       }

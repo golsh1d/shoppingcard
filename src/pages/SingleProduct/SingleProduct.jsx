@@ -9,13 +9,19 @@ import SingleProductWrapper from '../../components/SingleProductWrapper/SinglePr
 export default function SingleProduct() {
   
   let { productID } = useParams()
+
+  const[productInfo , setProductInfo] = useState({})
+  
+  function addToCard(productInfo) {
+    setProductInfo(productInfo)
+  }
   
   return (
     <>
-      <Nav />
+      <Nav productInfo={productInfo}/>
       <div className='SingleProduct-main-container'>
-        <CardWrapper />
-        <SingleProductWrapper id={productID}/>
+        <CardWrapper productInfo={productInfo}/>
+        <SingleProductWrapper id={productID} onAddGrandParent={addToCard}/>
       </div>
     </>
   )

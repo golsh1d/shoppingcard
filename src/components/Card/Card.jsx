@@ -1,13 +1,14 @@
 import React from 'react'
 import './Card.css'
-import { useRef , useEffect } from 'react';
+import { useRef , useEffect , useState } from 'react';
 import CardProduct from '../CardProduct/CardProduct';
 import OffBtn from '../OffBtn/OffBtn';
 import DownLoadBtn from '../DownLoadBtn/DownLoadBtn';
 import CardTotal from '../CardTotal/CardTotal';
 
-export default function Card() {
-
+export default function Card({ mainProductInfo }) {
+  const [allProductsInfo , setAllProductsInfo] = useState([])  
+  
   let card = useRef()  
   let cardProducts = useRef()  
   let cardTotal = useRef()  
@@ -38,11 +39,27 @@ export default function Card() {
       };
   }, []);  
 
+  useEffect(() => {
+    if (mainProductInfo && Object.keys(mainProductInfo).length > 0) {
+        if (allProductsInfo) {
+            setAllProductsInfo(prev => [...prev , mainProductInfo])
+        } else {
+            setAllProductsInfo([mainProductInfo])
+        }
+    }
+  } , [mainProductInfo])
+
+  useEffect(() => {
+    console.log(allProductsInfo);
+  } , [allProductsInfo])
+
   return (
     <div className='Card-container' ref={card}>
         <div className='Card-title'>Card</div>
         <div className='Card-products' ref={cardProducts}>
-            <CardProduct />
+            {allProductsInfo && allProductsInfo.map(obj => (
+                <CardProduct {...obj} key={obj.id}/>
+            ))}
         </div>
         <div className='Card-total' ref={cardTotal}>
             <CardTotal />

@@ -5,13 +5,22 @@
     justify-content: space-between;
 }
 
+.CardProduct-right-sec{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .CardProduct-product-price{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    position: relative;
 }
 
 .CardProduct-dollar-icon{
     color: #004030;
+    position: absolute;
 }
 
 .CardProduct-dollar-icon-dark{
@@ -25,6 +34,13 @@
 
 .CardProduct-bin-icon-dark{
     color: #BF3131;
+}
+
+.CardProduct-detail{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 @media screen and (max-width : 768px){
@@ -43,8 +59,10 @@
     }
 
     .CardProduct-dollar-icon{
-        width: 18px !important;
-        height: 18px !important;
+        width: 11px !important;
+        height: 11px !important;
+        right: -11px;
+        top: 5px;
     }
 
     .CardProduct-bin-icon{
@@ -68,10 +86,11 @@
         font-weight: 500;
     }
 
-    .CardProduct-dollar-icon,
-    .CardProduct-bin-icon{
-        width: 21px !important;
-        height: 21px !important;
+    .CardProduct-dollar-icon{
+        width: 14px !important;
+        height: 14px !important;
+        right: -14px;
+        top: 5px;
     }
 
     .CardProduct-bin-icon{

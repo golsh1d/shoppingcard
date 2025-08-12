@@ -1,9 +1,10 @@
 import React from 'react'
 import './CardWrapper.css'
-import { useEffect , useRef } from 'react';
+import { useEffect , useRef , useState} from 'react';
 import Card from '../Card/Card';
 
-export default function CardWrapper() {
+export default function CardWrapper({ productInfo }) {
+  const[mainProductInfo , setMainProductInfo] = useState({})
 
   let cardWrapper = useRef()  
 
@@ -30,10 +31,13 @@ export default function CardWrapper() {
     };
   }, []);
 
+  useEffect(() => {
+    setMainProductInfo(productInfo)
+  } , [ productInfo ])
 
   return (
     <section className='CardWrapper' ref={cardWrapper}>
-      <Card />
+      <Card mainProductInfo={mainProductInfo}/>
     </section>
   )
 }

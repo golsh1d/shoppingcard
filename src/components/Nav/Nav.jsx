@@ -10,11 +10,12 @@ import NavSimpleBtn from '../NavSimpleBtn/NavSimpleBtn';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded';
 
-export default function Nav() {
+export default function Nav({ productInfo }) {
   const[isLogIn, setIsLogIn] = useState(false)
   const[sideCardStyle, setSideCardStyle] = useState(null)
   const[overlayStyle, setOverlayStyle] = useState(null)
   const[isModalShown, setIsModalShown] = useState(false)
+  const[productInfos , setProductInfos] = useState({})
 
   let Nav = useRef()
   let NavLink = useRef()
@@ -101,6 +102,10 @@ export default function Nav() {
     }
   } , [isLogIn])
 
+  useEffect(() => {
+    setProductInfos(productInfo)
+  } , [ productInfo ])
+
   return (
     <>
         <nav className='Nav-container' ref={Nav}>
@@ -123,7 +128,7 @@ export default function Nav() {
             </div>
         </nav>
         {isModalShown && <LogOutModal onCloseModal={closeModal} onNo={closeModal} onYes={deleteCookie}/>}
-        <SideCard styleProp={sideCardStyle} />
+        <SideCard productInfos={productInfos} styleProp={sideCardStyle} />
         <Overlay styleProp={overlayStyle} onOverlay={hideSideCard}/>
     </>
   )

@@ -4,6 +4,9 @@ import './ProductWrapperBottSec.css'
 import ProductCard from '../ProductCard/ProductCard'
 import RightPagination from '../RightPagination/RightPagination'
 import LeftPagination from '../LeftPagination/LeftPagination'
+import LogInAlertModal from '../LogInAlertModal/LogInAlertModal';
+import Overlay from '../Overlay/Overlay'
+
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Mousewheel, Keyboard } from 'swiper/modules';
@@ -59,6 +62,8 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
   ]) 
   const[finalProductsInfo , setFinalProductsInfo] = useState([])
   const[swiperIsShown , setSwiperIsShown] = useState(null)
+  const[isLogIn , setIsLogIn] = useState(null)
+  const[overlayStyle, setOverlayStyle] = useState(null) 
 
   let swiperRef = useRef(null)
 
@@ -73,6 +78,20 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       swiperRef.current.slideNext()
     }
   }  
+
+  function hideModal() {
+    setIsLogIn(true)
+    setOverlayStyle({display : "none"})
+  }
+
+  function userLogIn(bool) {
+    if(bool === true) {
+      setIsLogIn(true)
+    } else if(bool === false) {
+      setIsLogIn(false)
+      setOverlayStyle({display : "block"})
+    }
+  }
 
   useEffect(() => {
     let searchedProduct = []
@@ -202,7 +221,7 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
       {
         finalProductsInfo.map(obj => (
         <SwiperSlide >
-          <ProductCard {...obj} key={obj.id}/>
+          <ProductCard {...obj} key={obj.id} onLogIn={userLogIn}/>
         </SwiperSlide>
         ))
       }
@@ -221,6 +240,9 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
              <RightPagination onRight={handleNext}/>
         </div>
     </div>
+
+    {isLogIn === false && <LogInAlertModal/>}
+    <Overlay styleProp={overlayStyle} onOverlay={hideModal}/>
     </>
   )
 }

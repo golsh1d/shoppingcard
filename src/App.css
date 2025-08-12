@@ -9,6 +9,7 @@ body , * {
 .App-container {
   width: 100vw;
   background-color: #fff;
+  position: relative;
 }
 
 .App-container-dark{

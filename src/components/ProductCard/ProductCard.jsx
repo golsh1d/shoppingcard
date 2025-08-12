@@ -3,10 +3,11 @@ import './ProductCard.css'
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import { useEffect , useRef } from 'react';
+import { useEffect , useRef , useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ProductCard({id , title , img , rate , price , des}) {
+export default function ProductCard({id , title , img , rate , price , des, onLogIn}) {
+
   let cardContainer = useRef()  
   let dollarIcon = useRef()  
   let cardDes = useRef()  
@@ -23,8 +24,27 @@ export default function ProductCard({id , title , img , rate , price , des}) {
           cardDes.current.classList.remove("ProductCard-des-dark");
   }}
 
+  function getCookie(name) {
+    const cookies = document.cookie.split(';')
+    for (let i = 0 ; i < cookies.length ; i++) {
+        const c = cookies[i].trim();
+        if (c.startsWith(name + '=')) {
+            return c.substring(name.length + 1)
+        }
+    }
+  }
+
+  function checkIsLogin() {
+    const username = getCookie('username')
+    if(username) {
+        onLogIn(true)
+    } else {
+        onLogIn(false)
+    }
+  }
+
   function addBtnClicked() {
-    console.log("clicked");
+    checkIsLogin()
   }
     
   useEffect(() => {

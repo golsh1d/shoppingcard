@@ -22,6 +22,10 @@ export default function ProductCard({id , title , img , rate , price , des}) {
           dollarIcon.current.classList.remove("ProductCard-dollar-icon-dark");
           cardDes.current.classList.remove("ProductCard-des-dark");
   }}
+
+  function addBtnClicked() {
+    console.log("clicked");
+  }
     
   useEffect(() => {
       const handleStorageUpdate = () => {
@@ -38,10 +42,10 @@ export default function ProductCard({id , title , img , rate , price , des}) {
   }, []);    
 
   return (
-    <Link to={`/singleProduct/${id}`} className='ProductCard-container' ref={cardContainer}>
-        <div className='ProductCard-img-wrapper'>
+    <div to={`/singleProduct/${id}`} className='ProductCard-container' ref={cardContainer}>
+        <Link className='ProductCard-img-wrapper' to={`/singleProduct/${id}`}>
             <img src={img} alt="product" className='ProductCard-img'/>
-        </div>
+        </Link>
         <div className='ProductCard-detail'>
             <div className='ProductCard-head'>
                 <div className='ProductCard-title'>{title}</div>
@@ -58,11 +62,11 @@ export default function ProductCard({id , title , img , rate , price , des}) {
                     <span className='ProductCard-price-span'>{price}</span>
                     <MonetizationOnRoundedIcon className='ProductCard-dollar-icon' ref={dollarIcon}/>
                 </div>
-                <div className='ProductCard-btn'>
+                <div className='ProductCard-btn' onClick={addBtnClicked}>
                     <AddRoundedIcon className='ProductCard-btn-icon'/>
                 </div>
             </div>
         </div>
-    </Link>
+    </div>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import './SideCard.css'
 import { useEffect , useRef } from 'react';
+import Card from '../Card/Card';
 
 export default function SideCard({ styleProp }) {
 
@@ -30,6 +31,8 @@ export default function SideCard({ styleProp }) {
   }, []);
   
   return (
-    <nav className='SideCard-container' ref={sideCard} style={{ ...styleProp }}></nav>
+    <nav className='SideCard-container' ref={sideCard} style={{ ...styleProp }}>
+      <Card />
+    </nav>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import './CardWrapper.css'
 import { useEffect , useRef } from 'react';
+import Card from '../Card/Card';
 
 export default function CardWrapper() {
 
@@ -31,6 +32,8 @@ export default function CardWrapper() {
 
 
   return (
-    <section className='CardWrapper' ref={cardWrapper}></section>
+    <section className='CardWrapper' ref={cardWrapper}>
+      <Card />
+    </section>
   )
 }

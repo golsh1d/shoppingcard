@@ -1,0 +1,68 @@
+.OffBtn-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.OffBtn-input{
+    width: 90%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: "Nata Sans", sans-serif;
+    letter-spacing: 0.05px;
+    color: #000;
+}
+
+.OffBtn-input-dark{
+    color: #fff;
+}
+
+.OffBtn-btn{
+    height: 100%;
+    border: none;
+    outline: none;
+    font-family: "Nata Sans", sans-serif;
+    background-color: #D6A99D;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media screen and (max-width : 768px) {
+    .OffBtn-container{
+        height: 25px;
+    }
+
+    .OffBtn-input{
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 5px;
+    }
+
+    .OffBtn-btn{
+        padding: 0px 5px;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+@media screen and (min-width : 768px){
+    .OffBtn-container{
+        height: 35px;
+    }
+
+    .OffBtn-input{
+        font-size: 16px;
+        font-weight: 500;
+        padding: 5px 7px;
+    }
+
+    .OffBtn-btn{
+        padding: 0px 7px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+}

@@ -3,7 +3,7 @@ import './SideCard.css'
 import { useEffect , useRef , useState} from 'react';
 import Card from '../Card/Card';
 
-export default function SideCard({ styleProp , productInfos }) {
+export default function SideCard({ styleProp , productInfoNext }) {
   const [mainProductInfo , setMainProductInfo] = useState([])  
 
   let sideCard = useRef()
@@ -32,8 +32,8 @@ export default function SideCard({ styleProp , productInfos }) {
   }, []);
 
   useEffect(() => {
-    setMainProductInfo(productInfos)
-  } , [productInfos])
+    setMainProductInfo(productInfoNext)
+  } , [productInfoNext])
   
   return (
     <nav className='SideCard-container' ref={sideCard} style={{ ...styleProp }}>

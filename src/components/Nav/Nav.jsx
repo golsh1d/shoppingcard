@@ -15,7 +15,7 @@ export default function Nav({ productInfo }) {
   const[sideCardStyle, setSideCardStyle] = useState(null)
   const[overlayStyle, setOverlayStyle] = useState(null)
   const[isModalShown, setIsModalShown] = useState(false)
-  const[productInfos , setProductInfos] = useState({})
+  const[productInfoNext , setProductInfoNext] = useState({})
 
   let Nav = useRef()
   let NavLink = useRef()
@@ -103,7 +103,7 @@ export default function Nav({ productInfo }) {
   } , [isLogIn])
 
   useEffect(() => {
-    setProductInfos(productInfo)
+    setProductInfoNext(productInfo)
   } , [ productInfo ])
 
   return (
@@ -128,7 +128,7 @@ export default function Nav({ productInfo }) {
             </div>
         </nav>
         {isModalShown && <LogOutModal onCloseModal={closeModal} onNo={closeModal} onYes={deleteCookie}/>}
-        <SideCard productInfos={productInfos} styleProp={sideCardStyle} />
+        <SideCard productInfoNext={productInfoNext} styleProp={sideCardStyle} />
         <Overlay styleProp={overlayStyle} onOverlay={hideSideCard}/>
     </>
   )

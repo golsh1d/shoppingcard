@@ -4,7 +4,7 @@ import { useRef , useEffect , useState} from 'react';
 import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded';
 
 export default function CardTotal() {
-  const [cardTotalAmount , setCardTotalAmount] = useState(0)  
+  const [cardTotalAmount , setCardTotalAmount] = useState(1000)  
   let dollarIcon = useRef()
 
   function getLocalStorage() {

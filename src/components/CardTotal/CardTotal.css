@@ -1,7 +1,10 @@
 .CardTotal-container{
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
 }
 
 .CardTotal-price{
@@ -11,44 +14,20 @@
     margin-left: 5px;
 }
 
+.CardTotal-price-span{
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .CardTotal-icon{
+    position: absolute;
+    width: 14px !important;
+    height: 14px !important;
+    right: -14px;
+    top: 5.5px;
     color: #004030;
 }
 
 .CardTotal-icon-dark{
     color: oklch(51.1% 0.096 186.391);
-}
-
-@media screen and (max-width : 768px) {
-    .CardTotal-container{
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .CardTotal-price-span{
-        font-size: 14px;
-        font-weight: 400;
-    }
-
-    .CardTotal-icon{
-        width: 16px !important;
-        height: 16px !important;
-    }
-}
-
-@media screen and (min-width : 768px){
-    .CardTotal-container{
-        font-size: 18px;
-        font-weight: 500;
-    }
-
-    .CardTotal-price-span{
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .CardTotal-icon{
-        width: 19px !important;
-        height: 19px !important;
-    }
 }

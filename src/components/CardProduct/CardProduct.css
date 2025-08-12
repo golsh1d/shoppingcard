@@ -3,10 +3,11 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    padding: 12px;
 }
 
 .CardProduct-right-sec{
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,8 +20,12 @@
 }
 
 .CardProduct-dollar-icon{
-    color: #004030;
+    width: 14px !important;
+    height: 14px !important;
     position: absolute;
+    right: -14px;
+    top: 3px;
+    color: #004030;
 }
 
 .CardProduct-dollar-icon-dark{
@@ -28,6 +33,8 @@
 }
 
 .CardProduct-bin-icon{
+    width: 20px !important;
+    height: 20px !important;
     color: #820000;
     cursor: pointer;
 }
@@ -43,58 +50,12 @@
     justify-content: space-between;
 }
 
-@media screen and (max-width : 768px){
-    .CardProduct{
-        padding: 8px;
-    }
-
-    .CardProduct-product-title{
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .CardProduct-product-price-span{
-        font-size: 14px;
-        font-weight: 400;
-    }
-
-    .CardProduct-dollar-icon{
-        width: 11px !important;
-        height: 11px !important;
-        right: -11px;
-        top: 5px;
-    }
-
-    .CardProduct-bin-icon{
-        width: 21px !important;
-        height: 21px !important;
-    }
+.CardProduct-product-title{
+    font-size: 16px;
+    font-weight: 500;
 }
 
-@media screen and (min-width : 768px) {
-    .CardProduct{
-        padding: 12px;
-    }
-
-    .CardProduct-product-title{
-        font-size: 18px;
-        font-weight: 500;
-    }
-
-    .CardProduct-product-price-span{
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .CardProduct-dollar-icon{
-        width: 14px !important;
-        height: 14px !important;
-        right: -14px;
-        top: 5px;
-    }
-
-    .CardProduct-bin-icon{
-        width: 24px !important;
-        height: 24px !important;
-    }
+.CardProduct-product-price-span{
+    font-size: 14px;
+    font-weight: 400;
 }

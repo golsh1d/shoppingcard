@@ -12,6 +12,10 @@
 .Card-off,
 .Card-download,
 .Card-total{
+    height: 55px;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 500;
     border-bottom: 1px solid #d9d9d9;
     display: flex;
     align-items: center;
@@ -19,7 +23,9 @@
 
 .Card-products{
     width: 100%;
+    height: calc(100% - 220px);
     background-color: #f3f3f3;
+    overflow-y: scroll;
 }
 
 .Card-off{
@@ -41,36 +47,4 @@
 .Card-products-dark , 
 .Card-total-dark{
     background-color: oklch(37% 0.013 285.805);
-}
-
-@media screen and (max-width : 768px) {
-    .Card-title,
-    .Card-off,
-    .Card-download,
-    .Card-total{
-        height: 45px;
-        padding: 8px;
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .Card-products{
-        height: calc(100% - 180px);
-    }
-}
-
-@media screen and (min-width : 768px) {
-    .Card-title,
-    .Card-off,
-    .Card-download,
-    .Card-total{
-        height: 55px;
-        padding: 12px;
-        font-size: 18px;
-        font-weight: 500;
-    }
-
-    .Card-products{
-        height: calc(100% - 220px);
-    }
 }

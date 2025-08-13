@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
-export default function SingleProductWrapper({ id }) {
+export default function SingleProductWrapper({ id , onLogIn, onAdd }) {
   const [allProductsInfo , setAllProductsInfo] = useState([
       {id : 1 , category : "bag" , count : 1 , title : "Arkatella" , img : `${process.env.PUBLIC_URL}/imgs/bag1.jpg` , rate : "4.5" , price : "1000" , des : `A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style. A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style. A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style. A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.`} ,
       {id : 2 , category : "bag" , count : 2 , title : "Arko" , img : `${process.env.PUBLIC_URL}/imgs/bag2.jpg` , rate : "4" , price : "2000" , des : `Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends. Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends. Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends. Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.`} ,
@@ -73,6 +73,44 @@ export default function SingleProductWrapper({ id }) {
     }
   }
 
+  function getCookie(name) {
+    const cookies = document.cookie.split(';')
+    for (let i = 0 ; i < cookies.length ; i++) {
+        const c = cookies[i].trim();
+        if (c.startsWith(name + '=')) {
+            return c.substring(name.length + 1)
+        }
+    }
+  }
+
+  function checkIsLogin(productInfo) {
+    const username = getCookie('username')
+    if(username) {
+        onLogIn(true)
+        onAdd(productInfo)
+    } else {
+        onLogIn(false)
+    }
+  }
+
+  function addBtnClicked() {
+    let mainProductInfo = allProductsInfo.find(obj => {
+      if(obj.id == id) {
+        return obj
+      }
+    })
+
+    if (mainProductInfo.id && mainProductInfo.title && mainProductInfo.price && mainProductInfo.count) {
+        let productInfo = {
+            productID : mainProductInfo.id,
+            productTitle : mainProductInfo.title,
+            productPrice : mainProductInfo.price,
+            productCount : mainProductInfo.count
+        }
+        checkIsLogin(productInfo)
+    }
+  }
+
   useEffect(() => {
     let mainProduct = allProductsInfo.find(obj => {
       if (obj.id == id) {
@@ -129,7 +167,7 @@ export default function SingleProductWrapper({ id }) {
             <span className='SingleProductWrapper-price-span'>{finalProductInfo.price}</span>
             <MonetizationOnRoundedIcon className='SingleProductWrapper-dollar-icon' ref={dollarIcon}/>
           </div>
-          <button className='SingleProductWrapper-btn'>Add to card</button>
+          <button className='SingleProductWrapper-btn' onClick={addBtnClicked}>Add to card</button>
         </div>
         <div className='SingleProductWrapper-right-section'>
           <div className='SingleProductWrapper-img-wrapper'>

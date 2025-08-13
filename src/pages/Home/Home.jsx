@@ -17,7 +17,7 @@ export default function Home() {
       <Nav productInfo={productInfo}/>
       <div className='Home-main-container'>
         <CardWrapper productInfo={productInfo}/>
-        <ProductsWrapper onAddGrandParent={addToCard}/>
+        <ProductsWrapper onAdd={addToCard}/>
       </div>
     </>
   )

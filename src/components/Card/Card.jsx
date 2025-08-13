@@ -24,6 +24,29 @@ export default function Card({ mainProductInfo }) {
         cardProducts.current.classList.remove("Card-products-dark");
         cardTotal.current.classList.remove("Card-total-dark");
   }}
+
+  function getProductInfoFromLocalStorage() {
+    let allProducts = JSON.parse(localStorage.getItem('productInfo'))
+
+    if (allProducts) {
+        setAllProductsInfo(allProducts)
+    }
+  }
+
+  function setProductInfoToLocalStorage(mainProductInfo) {
+    let localStorageArray = JSON.parse(localStorage.getItem("productInfo")) || []
+
+    let objExist = localStorageArray.some(obj => {
+        if (obj.productID === mainProductInfo.productID) {
+            return true
+        }
+    })
+
+    if (!objExist) {
+        localStorageArray.push(mainProductInfo)
+        localStorage.setItem('productInfo' , JSON.stringify(localStorageArray))
+    }
+  }
       
   useEffect(() => {
       const handleStorageUpdate = () => {
@@ -40,18 +63,29 @@ export default function Card({ mainProductInfo }) {
   }, []);  
 
   useEffect(() => {
+    getProductInfoFromLocalStorage()
+  } , [])
+
+  useEffect(() => {
     if (mainProductInfo && Object.keys(mainProductInfo).length > 0) {
         if (allProductsInfo) {
-            setAllProductsInfo(prev => [...prev , mainProductInfo])
+            let objExist = allProductsInfo.some(obj => {
+                if (obj.productID === mainProductInfo.productID) {
+                    return true
+                }
+            })
+
+            if (!objExist) {
+                setAllProductsInfo(prev => [...prev , mainProductInfo])
+            }
+            
         } else {
             setAllProductsInfo([mainProductInfo])
         }
+
+        setProductInfoToLocalStorage(mainProductInfo)
     }
   } , [mainProductInfo])
-
-  useEffect(() => {
-    console.log(allProductsInfo);
-  } , [allProductsInfo])
 
   return (
     <div className='Card-container' ref={card}>

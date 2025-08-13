@@ -4,7 +4,7 @@ import { useEffect , useRef } from 'react';
 import ProductsWrapperTopSec from '../ProductsWrapperTopSec/ProductsWrapperTopSec'
 import ProductWrapperBottSec from '../ProductWrapperBottSec/ProductWrapperBottSec';
 
-export default function ProductsWrapper({onAddGrandParent}) {
+export default function ProductsWrapper({ onAdd }) {
   const[allReorderTrigger,setAllReorderTrigger] = useState(0)
   const[bagsReorderTrigger,setBagsReorderTrigger] = useState(0)
   const[shoesReorderTrigger,setShoesReorderTrigger] = useState(0)
@@ -62,7 +62,7 @@ export default function ProductsWrapper({onAddGrandParent}) {
   }
 
   function addTocard(productInfo) {
-    onAddGrandParent(productInfo)
+    onAdd(productInfo)
   }
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function ProductsWrapper({onAddGrandParent}) {
   return (
     <div className='ProductsWrapper' ref={ProductsWrapper}>
         <ProductsWrapperTopSec onAllReorder={handleAllReorder} onBagsReorder={handleBagsReorder} onShoesReorder={handleShoesReorder} onAccReorder={handleAccReorder} onBeltReorder={handleBeltReorder}  onSortPopularProducts={handlePopularSort} onSortEarliestProducts={handleEarliestSort}  onSortLatestProducts={handleLatestSort} onSearchInProducts={handleSearch}/>
-        <ProductWrapperBottSec allReorderTrigger={allReorderTrigger} bagsReorderTrigger={bagsReorderTrigger} shoesReorderTrigger={shoesReorderTrigger} accReorderTrigger={accReorderTrigger} beltsReorderTrigger={beltsReorderTrigger}  popularSortTrigger={popularSortTrigger} earliestSortTrigger={earliestSortTrigger} latestSortTrigger={latestSortTrigger} searchContent={searchContent} onAddParent={addTocard}/>
+        <ProductWrapperBottSec allReorderTrigger={allReorderTrigger} bagsReorderTrigger={bagsReorderTrigger} shoesReorderTrigger={shoesReorderTrigger} accReorderTrigger={accReorderTrigger} beltsReorderTrigger={beltsReorderTrigger}  popularSortTrigger={popularSortTrigger} earliestSortTrigger={earliestSortTrigger} latestSortTrigger={latestSortTrigger} searchContent={searchContent} onAdd={addTocard}/>
     </div>
   )
 }

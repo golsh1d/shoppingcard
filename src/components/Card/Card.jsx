@@ -7,7 +7,8 @@ import DownLoadBtn from '../DownLoadBtn/DownLoadBtn';
 import CardTotal from '../CardTotal/CardTotal';
 
 export default function Card({ mainProductInfo , onShowModal }) {
-  const [allProductsInfo , setAllProductsInfo] = useState([])  
+  const [allProductsInfo , setAllProductsInfo] = useState([])
+  const [totalPrice , setTotalPrice] = useState(0)
   
   let card = useRef()  
   let cardProducts = useRef()  
@@ -53,8 +54,18 @@ export default function Card({ mainProductInfo , onShowModal }) {
     onShowModal(productMaxCount)
   }
 
-  function countProduct(count) {
-    console.log(count);
+  function calcTotalPrice() {
+    let localStorageArray = JSON.parse(localStorage.getItem('productInfo'))
+
+    if (localStorageArray) {
+        let totalPrice = 0
+
+        localStorageArray.map(obj => {
+            totalPrice = totalPrice + (obj.productPrice * obj.productSelectedCount)
+        })
+        
+        setTotalPrice(totalPrice)
+    }
   }
       
   useEffect(() => {
@@ -96,16 +107,34 @@ export default function Card({ mainProductInfo , onShowModal }) {
     }
   } , [mainProductInfo])
 
+  useEffect(() => {
+    calcTotalPrice()
+  } , [allProductsInfo])
+
+  useEffect(() => {
+      const handleStorageUpdate = () => {
+          calcTotalPrice();
+      };
+      
+      calcTotalPrice();
+      
+      window.addEventListener("lsSelectedCountUpdated", handleStorageUpdate);
+      
+      return () => {
+          window.removeEventListener("lsSelectedCountUpdated", handleStorageUpdate);
+      };
+  }, []);  
+
   return (
     <div className='Card-container' ref={card}>
         <div className='Card-title'>Card</div>
         <div className='Card-products' ref={cardProducts}>
             {allProductsInfo && allProductsInfo.map(obj => (
-                <CardProduct {...obj} key={obj.id} onShowModal={showModal} onCount={countProduct}/>
+                <CardProduct {...obj} key={obj.id} onShowModal={showModal}/>
             ))}
         </div>
         <div className='Card-total' ref={cardTotal}>
-            <CardTotal />
+            <CardTotal totalPrice={totalPrice}/>
         </div>
         <div className='Card-off'>
             <OffBtn />

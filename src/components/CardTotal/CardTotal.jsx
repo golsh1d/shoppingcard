@@ -3,8 +3,8 @@ import './CardTotal.css'
 import { useRef , useEffect , useState} from 'react';
 import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded';
 
-export default function CardTotal() {
-  const [cardTotalAmount , setCardTotalAmount] = useState(1000)  
+export default function CardTotal({totalPrice}) {
+  const [cardTotalAmount , setCardTotalAmount] = useState(0)  
   let dollarIcon = useRef()
 
   function getLocalStorage() {
@@ -28,6 +28,10 @@ export default function CardTotal() {
         window.removeEventListener("lsUpdated", handleStorageUpdate);
     };
   }, []);  
+
+  useEffect(() => {
+    setCardTotalAmount(totalPrice)
+  } , [totalPrice])
 
   return (
     <div className='CardTotal-container'>

@@ -3,7 +3,7 @@ import './ProductCounter.css'
 import ArrowDropDownCircleRoundedIcon from '@mui/icons-material/ArrowDropDownCircleRounded';
 import { useState } from 'react';
 
-export default function ProductCounter({ count , onShowModal , onCount , selectedCount , mainID}) {
+export default function ProductCounter({ count , onShowModal , selectedCount , mainID}) {
   const[productSelectedCount , setProductSelectedCount] = useState(1)
   const[productMaxCount , setProductMaxCount] = useState(1)
   const[productID , setProductID] = useState(1)
@@ -30,7 +30,7 @@ export default function ProductCounter({ count , onShowModal , onCount , selecte
     if (count <= productMaxCount) {
       setProductSelectedCount(count)
       setSelectedCountToLocalStorage(count)
-      onCount(count)
+      window.dispatchEvent(new Event("lsSelectedCountUpdated"))
     } else {
       onShowModal(productMaxCount)
     }
@@ -42,7 +42,7 @@ export default function ProductCounter({ count , onShowModal , onCount , selecte
     if (count) {
         setProductSelectedCount(count)
         setSelectedCountToLocalStorage(count)
-        onCount(count)
+        window.dispatchEvent(new Event("lsSelectedCountUpdated"))
     }
   }
 

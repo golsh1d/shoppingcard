@@ -6,7 +6,7 @@ import ProductCounter from '../ProductCounter/ProductCounter';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
 
-export default function CardProduct({ productID , productTitle, productCount, productSelectedCount, productPrice , onShowModal, onCount}) {
+export default function CardProduct({ productID , productTitle, productCount, productSelectedCount, productPrice , onShowModal}) {
   const [count , setCount] = useState(null)
   const [selectedCount , setSelectedCount] = useState(null)
   const [mainID , setMainID] = useState(null)
@@ -25,10 +25,6 @@ export default function CardProduct({ productID , productTitle, productCount, pr
 
   function showModal(productMaxCount) {
     onShowModal(productMaxCount)
-  }
-
-  function countProduct(count) {
-    onCount(count)
   }
         
   useEffect(() => {
@@ -66,7 +62,7 @@ export default function CardProduct({ productID , productTitle, productCount, pr
             <MonetizationOnRoundedIcon className='CardProduct-dollar-icon' ref={dollarIcon}/>
             </div>
             <div className='CardProduct-detail'>
-                <ProductCounter count={count} selectedCount={selectedCount} mainID={mainID} onShowModal={showModal} onCount={countProduct}/>
+                <ProductCounter count={count} selectedCount={selectedCount} mainID={mainID} onShowModal={showModal}/>
                 <DeleteForeverRoundedIcon className='CardProduct-bin-icon' ref={binIcon}/>
             </div>
         </div>

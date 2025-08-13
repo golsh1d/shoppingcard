@@ -6,7 +6,7 @@ import OffBtn from '../OffBtn/OffBtn';
 import DownLoadBtn from '../DownLoadBtn/DownLoadBtn';
 import CardTotal from '../CardTotal/CardTotal';
 
-export default function Card({ mainProductInfo }) {
+export default function Card({ mainProductInfo , onShowModal }) {
   const [allProductsInfo , setAllProductsInfo] = useState([])  
   
   let card = useRef()  
@@ -47,6 +47,14 @@ export default function Card({ mainProductInfo }) {
         localStorage.setItem('productInfo' , JSON.stringify(localStorageArray))
         window.dispatchEvent(new Event("lsCountUpdated"))
     }
+  } 
+
+  function showModal(productMaxCount) {
+    onShowModal(productMaxCount)
+  }
+
+  function countProduct(count) {
+    console.log(count);
   }
       
   useEffect(() => {
@@ -93,7 +101,7 @@ export default function Card({ mainProductInfo }) {
         <div className='Card-title'>Card</div>
         <div className='Card-products' ref={cardProducts}>
             {allProductsInfo && allProductsInfo.map(obj => (
-                <CardProduct {...obj} key={obj.id}/>
+                <CardProduct {...obj} key={obj.id} onShowModal={showModal} onCount={countProduct}/>
             ))}
         </div>
         <div className='Card-total' ref={cardTotal}>

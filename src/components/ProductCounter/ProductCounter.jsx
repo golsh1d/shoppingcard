@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './ProductCounter.css'
 import ArrowDropDownCircleRoundedIcon from '@mui/icons-material/ArrowDropDownCircleRounded';
 import { useState } from 'react';
 
-export default function ProductCounter() {
+export default function ProductCounter({ count , onShowModal , onCount }) {
   const[productCount , setProductCount] = useState(1)
+  const[productMaxCount , setProductMaxCount] = useState(1)
 
   function increaseCount() {
     let count = productCount + 1
     
-    setProductCount(count)
+    if (count <= productMaxCount) {
+      setProductCount(count)
+      onCount(count)
+    } else {
+      onShowModal(productMaxCount)
+    }
   }
 
   function decreaseCount() {
@@ -17,8 +23,13 @@ export default function ProductCounter() {
     
     if (count) {
         setProductCount(count)
+        onCount(count)
     }
   }
+
+  useEffect(() => {
+    setProductMaxCount(count)
+  } , [count])
 
   return (
     <div className='ProductCounter-container'>

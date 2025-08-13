@@ -3,7 +3,7 @@ import './SideCard.css'
 import { useEffect , useRef , useState} from 'react';
 import Card from '../Card/Card';
 
-export default function SideCard({ styleProp , productInfoNext }) {
+export default function SideCard({ styleProp , productInfoNext , onShowModal }) {
   const [mainProductInfo , setMainProductInfo] = useState([])  
 
   let sideCard = useRef()
@@ -15,6 +15,10 @@ export default function SideCard({ styleProp , productInfoNext }) {
     } else {
         sideCard.current.classList.remove("SideCard-container-dark");
     }
+  }
+
+  function showModal(productMaxCount) {
+    onShowModal(productMaxCount)
   }
   
   useEffect(() => {
@@ -37,7 +41,7 @@ export default function SideCard({ styleProp , productInfoNext }) {
   
   return (
     <nav className='SideCard-container' ref={sideCard} style={{ ...styleProp }}>
-      <Card mainProductInfo={mainProductInfo}/>
+      <Card mainProductInfo={mainProductInfo} onShowModal={showModal}/>
     </nav>
   )
 }

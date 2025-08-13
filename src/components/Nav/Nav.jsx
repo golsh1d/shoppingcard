@@ -9,15 +9,18 @@ import NavAccardeonBtn from '../NavAccardeonBtn/NavAccardeonBtn';
 import NavSimpleBtn from '../NavSimpleBtn/NavSimpleBtn';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded';
-import { JSON } from 'mysql/lib/protocol/constants/types';
+import MaxCountAlertModal from '../MaxCountAlertModal/MaxCountAlertModal';
 
 export default function Nav({ productInfo }) {
   const[isLogIn, setIsLogIn] = useState(false)
   const[sideCardStyle, setSideCardStyle] = useState(null)
-  const[overlayStyle, setOverlayStyle] = useState(null)
-  const[isModalShown, setIsModalShown] = useState(false)
+  const[sideOverlayStyle, setSideOverlayStyle] = useState(null)
+  const[modalOverLayStyle, setModalOverLayStyle] = useState(null)
+  const[isLogoutModalShown, setIsLogOutModalShown] = useState(false)
   const[productInfoNext , setProductInfoNext] = useState({})
   const[lsCount , setLsCount] = useState(null)
+  const[isCountAlertModalShown , setIsCountAlertModalShown] = useState(false)
+  const[productMaxCount , setProductMaxCount] = useState(null)
 
   let Nav = useRef()
   let NavLink = useRef()
@@ -66,34 +69,48 @@ export default function Nav({ productInfo }) {
 
   function showSideCard() {
     setSideCardStyle({transform : "translateX(0px)"})
-    setOverlayStyle({display : "block"})
+    setSideOverlayStyle({display : "block"})
   }
 
   function hideSideCard() {
     setSideCardStyle({transform : "translateX(-300px)"})
-    setOverlayStyle({display : "none"})
+    setSideOverlayStyle({display : "none"})
   }
 
   function deleteCookie() {
-    setIsModalShown(false)
+    setIsLogOutModalShown(false)
     document.cookie = `username=; expires=Thu, 18 Dec 2000 12:00:00 UTC; path=/`;
     setIsLogIn(false) 
   }
 
   function showModal() {
-    setIsModalShown(true)
+    setIsLogOutModalShown(true)
   }
 
-  function closeModal() {
-    setIsModalShown(false)
+  function closeLogOutModal() {
+    setIsLogOutModalShown(false)
   }
 
   function getCountOfLocalStorageObj() {
-    let allObjs = localStorage.getItem('productInfo')
+    let allObjs = JSON.parse(localStorage.getItem('productInfo'))
 
-    let allObjArray = allObjs.split('productID')
+    if (allObjs) {
+      setLsCount(allObjs.length)
+    } else {
+      setLsCount(0)
+    }
 
-    setLsCount(allObjArray.length - 1)
+  }
+
+  function showCountAlertModal(productMaxCount) {
+    setProductMaxCount(productMaxCount)
+    setIsCountAlertModalShown(true)
+    setModalOverLayStyle({ display : "block" , zIndex : 11 })
+  }
+
+  function hideCountAlertModal() {
+    setModalOverLayStyle({display : "none"})
+    setIsCountAlertModalShown(false)
   }
 
   useEffect(() => {
@@ -154,9 +171,11 @@ export default function Nav({ productInfo }) {
                 }
             </div>
         </nav>
-        {isModalShown && <LogOutModal onCloseModal={closeModal} onNo={closeModal} onYes={deleteCookie}/>}
-        <SideCard productInfoNext={productInfoNext} styleProp={sideCardStyle} />
-        <Overlay styleProp={overlayStyle} onOverlay={hideSideCard}/>
+        {isLogoutModalShown && <LogOutModal onCloseModal={closeLogOutModal} onNo={closeLogOutModal} onYes={deleteCookie}/>}
+        <SideCard productInfoNext={productInfoNext} styleProp={sideCardStyle} onShowModal={showCountAlertModal}/>
+        {isCountAlertModalShown && <MaxCountAlertModal productMaxCount={productMaxCount}/>}
+        <Overlay styleProp={sideOverlayStyle} onOverlay={hideSideCard}/>
+        <Overlay styleProp={modalOverLayStyle} onOverlay={hideCountAlertModal}/>
     </>
   )
 } 

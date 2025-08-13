@@ -12,7 +12,7 @@ export default function Card({ mainProductInfo , onShowModal }) {
   let card = useRef()  
   let cardProducts = useRef()  
   let cardTotal = useRef()  
-
+ 
   function getLocalStorage() {
     let webAppereance = localStorage.getItem("mode");
     if (webAppereance === "dark") {

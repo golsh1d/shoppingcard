@@ -6,7 +6,7 @@ import OffBtn from '../OffBtn/OffBtn';
 import DownLoadBtn from '../DownLoadBtn/DownLoadBtn';
 import CardTotal from '../CardTotal/CardTotal';
 
-export default function Card({ mainProductInfo , onShowModal }) {
+export default function Card({ onShowModal }) {
   const [allProductsInfo , setAllProductsInfo] = useState([])
   const [totalPrice , setTotalPrice] = useState(0)
   
@@ -33,22 +33,6 @@ export default function Card({ mainProductInfo , onShowModal }) {
         setAllProductsInfo(allProducts)
     }
   }
-
-  function setProductInfoToLocalStorage(mainProductInfo) {
-    let localStorageArray = JSON.parse(localStorage.getItem("productInfo")) || []
-
-    let objExist = localStorageArray.some(obj => {
-        if (obj.productID === mainProductInfo.productID) {
-            return true
-        }
-    })
-
-    if (!objExist) {
-        localStorageArray.push(mainProductInfo)
-        localStorage.setItem('productInfo' , JSON.stringify(localStorageArray))
-        window.dispatchEvent(new Event("lsCountUpdated"))
-    }
-  } 
 
   function showModal(productMaxCount) {
     onShowModal(productMaxCount)
@@ -83,29 +67,18 @@ export default function Card({ mainProductInfo , onShowModal }) {
   }, []);  
 
   useEffect(() => {
+    const handleStorageUpdate = () => {
+        getProductInfoFromLocalStorage();
+    };
+
     getProductInfoFromLocalStorage()
+    
+    window.addEventListener("productUpdated", handleStorageUpdate);
+    
+    return () => {
+        window.removeEventListener("productUpdated", handleStorageUpdate);
+    };
   } , [])
-
-  useEffect(() => {
-    if (mainProductInfo && Object.keys(mainProductInfo).length > 0) {
-        if (allProductsInfo) {
-            let objExist = allProductsInfo.some(obj => {
-                if (obj.productID === mainProductInfo.productID) {
-                    return true
-                }
-            })
-
-            if (!objExist) {
-                setAllProductsInfo(prev => [...prev , mainProductInfo])
-            }
-
-        } else {
-            setAllProductsInfo([mainProductInfo])
-        }
-
-        setProductInfoToLocalStorage(mainProductInfo)
-    }
-  } , [mainProductInfo])
 
   useEffect(() => {
     calcTotalPrice()

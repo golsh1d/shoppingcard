@@ -3,8 +3,7 @@ import './SideCard.css'
 import { useEffect , useRef , useState} from 'react';
 import Card from '../Card/Card';
 
-export default function SideCard({ styleProp , productInfoNext , onShowModal }) {
-  const [mainProductInfo , setMainProductInfo] = useState([])  
+export default function SideCard({ styleProp , onShowModal }) {
 
   let sideCard = useRef()
 
@@ -34,14 +33,10 @@ export default function SideCard({ styleProp , productInfoNext , onShowModal }) 
         window.removeEventListener("lsUpdated", handleStorageUpdate);
     };
   }, []);
-
-  useEffect(() => {
-    setMainProductInfo(productInfoNext)
-  } , [productInfoNext])
   
   return (
     <nav className='SideCard-container' ref={sideCard} style={{ ...styleProp }}>
-      <Card mainProductInfo={mainProductInfo} onShowModal={showModal}/>
+      <Card onShowModal={showModal}/>
     </nav>
   )
 }

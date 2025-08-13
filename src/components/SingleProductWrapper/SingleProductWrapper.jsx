@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
-export default function SingleProductWrapper({ id , onLogIn, onAdd }) {
+export default function SingleProductWrapper({ id , onLogIn }) {
   const [allProductsInfo , setAllProductsInfo] = useState([
       {id : 1 , category : "bag" , count : 1 , userSelectedCount: 1, title : "Arkatella" , img : `${process.env.PUBLIC_URL}/imgs/bag1.jpg` , rate : "4.5" , price : "1000" , des : `A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.A chic everyday bag with a minimalist design. Perfect for casual outings, this bag holds all your essentials in style.`} ,
       {id : 2 , category : "bag" , count : 2 , userSelectedCount: 1, title : "Arko" , img : `${process.env.PUBLIC_URL}/imgs/bag2.jpg` , rate : "4" , price : "2000" , des : `Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.Elegant and compact, this handbag adds a classy touch to any outfit. Ideal for dinners, dates, or a night out with friends.`} ,
@@ -87,7 +87,6 @@ export default function SingleProductWrapper({ id , onLogIn, onAdd }) {
     const username = getCookie('username')
     if(username) {
         onLogIn(true)
-        onAdd(productInfo)
     } else {
         onLogIn(false)
     }
@@ -108,6 +107,21 @@ export default function SingleProductWrapper({ id , onLogIn, onAdd }) {
             productCount : mainProductInfo.count,
             productSelectedCount : mainProductInfo.userSelectedCount
         }
+
+        let localStorageArray = JSON.parse(localStorage.getItem("productInfo")) || []
+
+        let objExist = localStorageArray.some(obj => {
+            if (obj.productID === productInfo.productID) {
+                return true
+            }
+        })
+
+        if (!objExist) {
+            localStorageArray.push(productInfo)
+            localStorage.setItem('productInfo' , JSON.stringify(localStorageArray))
+            window.dispatchEvent(new Event("productUpdated"))
+        }
+
         checkIsLogin(productInfo)
     }
   }

@@ -6,7 +6,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { useEffect , useRef , useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ProductCard({id , title , img , rate , price , des, count, userSelectedCount, onLogIn, onAdd}) {
+export default function ProductCard({id , title , img , rate , price , des, count, userSelectedCount, onLogIn}) {
 
   let cardContainer = useRef()  
   let dollarIcon = useRef()  
@@ -38,7 +38,6 @@ export default function ProductCard({id , title , img , rate , price , des, coun
     const username = getCookie('username')
     if(username) {
         onLogIn(true)
-        onAdd(productInfo)
     } else {
         onLogIn(false)
     }
@@ -53,6 +52,21 @@ export default function ProductCard({id , title , img , rate , price , des, coun
             productCount : count,
             productSelectedCount : userSelectedCount
         }
+
+        let localStorageArray = JSON.parse(localStorage.getItem("productInfo")) || []
+
+        let objExist = localStorageArray.some(obj => {
+            if (obj.productID === productInfo.productID) {
+                return true
+            }
+        })
+
+        if (!objExist) {
+            localStorageArray.push(productInfo)
+            localStorage.setItem('productInfo' , JSON.stringify(localStorageArray))
+            window.dispatchEvent(new Event("productUpdated"))
+        }
+
         checkIsLogin(productInfo)
     }
   }

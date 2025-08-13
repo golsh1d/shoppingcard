@@ -11,13 +11,12 @@ import LogOutModal from '../LogOutModal/LogOutModal';
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded';
 import MaxCountAlertModal from '../MaxCountAlertModal/MaxCountAlertModal';
 
-export default function Nav({ productInfo }) {
+export default function Nav() {
   const[isLogIn, setIsLogIn] = useState(false)
   const[sideCardStyle, setSideCardStyle] = useState(null)
   const[sideOverlayStyle, setSideOverlayStyle] = useState(null)
   const[modalOverLayStyle, setModalOverLayStyle] = useState(null)
   const[isLogoutModalShown, setIsLogOutModalShown] = useState(false)
-  const[productInfoNext , setProductInfoNext] = useState({})
   const[lsCount , setLsCount] = useState(null)
   const[isCountAlertModalShown , setIsCountAlertModalShown] = useState(false)
   const[productMaxCount , setProductMaxCount] = useState(null)
@@ -132,20 +131,16 @@ export default function Nav({ productInfo }) {
   } , [isLogIn])
 
   useEffect(() => {
-    setProductInfoNext(productInfo)
-  } , [ productInfo ])
-
-  useEffect(() => {
     const handleStorageUpdate = () => {
         getCountOfLocalStorageObj()
     }
 
     getCountOfLocalStorageObj()
     
-    window.addEventListener("lsCountUpdated" , handleStorageUpdate)
+    window.addEventListener("productUpdated" , handleStorageUpdate)
     
     return () => {
-        window.removeEventListener("lsCountUpdated" , handleStorageUpdate)
+        window.removeEventListener("productUpdated" , handleStorageUpdate)
     }
   } , [])
 
@@ -172,7 +167,7 @@ export default function Nav({ productInfo }) {
             </div>
         </nav>
         {isLogoutModalShown && <LogOutModal onCloseModal={closeLogOutModal} onNo={closeLogOutModal} onYes={deleteCookie}/>}
-        <SideCard productInfoNext={productInfoNext} styleProp={sideCardStyle} onShowModal={showCountAlertModal}/>
+        <SideCard styleProp={sideCardStyle} onShowModal={showCountAlertModal}/>
         {isCountAlertModalShown && <MaxCountAlertModal productMaxCount={productMaxCount}/>}
         <Overlay styleProp={sideOverlayStyle} onOverlay={hideSideCard}/>
         <Overlay styleProp={modalOverLayStyle} onOverlay={hideCountAlertModal}/>

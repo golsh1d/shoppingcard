@@ -14,12 +14,6 @@ export default function SingleProduct() {
   
   let { productID } = useParams()
 
-  const[productInfo , setProductInfo] = useState({})
-  
-  function addToCard(productInfo) {
-    setProductInfo(productInfo)
-  }
-
   function userLogIn(bool) {
     if(bool === true) {
       setIsLogIn(true)
@@ -36,10 +30,10 @@ export default function SingleProduct() {
   
   return (
     <>
-      <Nav productInfo={productInfo}/>
+      <Nav />
       <div className='SingleProduct-main-container'>
-        <CardWrapper productInfo={productInfo}/>
-        <SingleProductWrapper id={productID} onAdd={addToCard} onLogIn={userLogIn}/>
+        <CardWrapper />
+        <SingleProductWrapper id={productID} onLogIn={userLogIn}/>
       </div>
       {isLogIn === false && <LogInAlertModal/>}
       <Overlay styleProp={overlayStyle} onOverlay={hideModal}/>

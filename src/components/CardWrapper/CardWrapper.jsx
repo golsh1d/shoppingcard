@@ -5,8 +5,7 @@ import Card from '../Card/Card';
 import MaxCountAlertModal from '../MaxCountAlertModal/MaxCountAlertModal';
 import Overlay from '../Overlay/Overlay';
 
-export default function CardWrapper({ productInfo }) {
-  const[mainProductInfo , setMainProductInfo] = useState({})
+export default function CardWrapper() {
   const[isModalShown , setIsModalShown] = useState(false)
   const[productMaxCount , setProductMaxCount] = useState(null)
   const[overlayStyle, setOverlayStyle] = useState(null)
@@ -47,14 +46,10 @@ export default function CardWrapper({ productInfo }) {
     };
   }, []);
 
-  useEffect(() => {
-    setMainProductInfo(productInfo)
-  } , [ productInfo ])
-
   return (
     <>
     <section className='CardWrapper' ref={cardWrapper}>
-      <Card mainProductInfo={mainProductInfo} onShowModal={showModal}/>
+      <Card onShowModal={showModal}/>
     </section>
     {isModalShown && <MaxCountAlertModal productMaxCount={productMaxCount}/>}
     <Overlay styleProp={overlayStyle} onOverlay={hideModal}/>

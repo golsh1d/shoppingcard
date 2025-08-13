@@ -9,6 +9,7 @@ import NavAccardeonBtn from '../NavAccardeonBtn/NavAccardeonBtn';
 import NavSimpleBtn from '../NavSimpleBtn/NavSimpleBtn';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded';
+import { JSON } from 'mysql/lib/protocol/constants/types';
 
 export default function Nav({ productInfo }) {
   const[isLogIn, setIsLogIn] = useState(false)
@@ -16,6 +17,7 @@ export default function Nav({ productInfo }) {
   const[overlayStyle, setOverlayStyle] = useState(null)
   const[isModalShown, setIsModalShown] = useState(false)
   const[productInfoNext , setProductInfoNext] = useState({})
+  const[lsCount , setLsCount] = useState(null)
 
   let Nav = useRef()
   let NavLink = useRef()
@@ -86,6 +88,14 @@ export default function Nav({ productInfo }) {
     setIsModalShown(false)
   }
 
+  function getCountOfLocalStorageObj() {
+    let allObjs = localStorage.getItem('productInfo')
+
+    let allObjArray = allObjs.split('productID')
+
+    setLsCount(allObjArray.length - 1)
+  }
+
   useEffect(() => {
     checkIsLogin()
   } , [])
@@ -94,7 +104,9 @@ export default function Nav({ productInfo }) {
     const handleStorageUpdate = () => {
         getLocalStorage()
     }
+
     getLocalStorage()
+    
     window.addEventListener("lsUpdated" , handleStorageUpdate)
     
     return () => {
@@ -106,6 +118,20 @@ export default function Nav({ productInfo }) {
     setProductInfoNext(productInfo)
   } , [ productInfo ])
 
+  useEffect(() => {
+    const handleStorageUpdate = () => {
+        getCountOfLocalStorageObj()
+    }
+
+    getCountOfLocalStorageObj()
+    
+    window.addEventListener("lsCountUpdated" , handleStorageUpdate)
+    
+    return () => {
+        window.removeEventListener("lsCountUpdated" , handleStorageUpdate)
+    }
+  } , [])
+
   return (
     <>
         <nav className='Nav-container' ref={Nav}>
@@ -116,6 +142,7 @@ export default function Nav({ productInfo }) {
                     </li>
                     <li className="Nav-li Nav-li-shopp-icon">
                         <LocalGroceryStoreRoundedIcon className='Nav-shopp-icon' ref={shopIcon} onClick={showSideCard}/>
+                        <div className='Nav-shopp-icon-badge'>{lsCount}</div>
                     </li>
                 </ul>
             </div>

@@ -45,6 +45,7 @@ export default function Card({ mainProductInfo }) {
     if (!objExist) {
         localStorageArray.push(mainProductInfo)
         localStorage.setItem('productInfo' , JSON.stringify(localStorageArray))
+        window.dispatchEvent(new Event("lsCountUpdated"))
     }
   }
       
@@ -78,7 +79,7 @@ export default function Card({ mainProductInfo }) {
             if (!objExist) {
                 setAllProductsInfo(prev => [...prev , mainProductInfo])
             }
-            
+
         } else {
             setAllProductsInfo([mainProductInfo])
         }

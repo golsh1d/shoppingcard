@@ -298,12 +298,12 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 16.8px;
-      max-height: 134.4px;
-      overflow: hidden;
+      max-height: 101px;
       display: -webkit-box;
-      -webkit-line-clamp: 8;
+      -webkit-line-clamp: 6;
       -webkit-box-orient: vertical;
       text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     .SingleProductWrapper-des:hover{  
@@ -370,22 +370,10 @@
     }
     
     .SingleProductWrapper-des{
-      height: 170px;
+      height: min-content;
       font-size: 16px;
       font-weight: 500;
       line-height: 19.2px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 9;
-      -webkit-box-orient: vertical;
-      text-overflow: ellipsis;
-    }
-
-    .SingleProductWrapper-des:hover{  
-      overflow: visible;
-      height: min-content;
-      max-height: none;
-      -webkit-line-clamp: unset;
     }
 
     .SingleProductWrapper-swiper-wrapper{

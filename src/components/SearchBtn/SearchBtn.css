@@ -19,6 +19,7 @@
     border: none;
     outline: none;
     background-color: transparent;
+    font-family: "Nata Sans", sans-serif;
 }
 
 @media screen and (max-width : 768px){

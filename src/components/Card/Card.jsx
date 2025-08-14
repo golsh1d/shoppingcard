@@ -100,7 +100,10 @@ export default function Card({ onShowModal }) {
 
   return (
     <div className='Card-container' ref={card}>
-        <div className='Card-title'>Card</div>
+        <div className='Card-head'>
+            <span>Card</span>
+            <div className='Card-pay-btn'>Pay</div>
+        </div>
         <div className='Card-products' ref={cardProducts}>
             {allProductsInfo && allProductsInfo.map(obj => (
                 <CardProduct {...obj} key={obj.id} onShowModal={showModal}/>

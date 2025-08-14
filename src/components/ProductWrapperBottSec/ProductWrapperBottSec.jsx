@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import './ProductWrapperBottSec.css'
 
 import ProductCard from '../ProductCard/ProductCard'
-import RightPagination from '../RightPagination/RightPagination'
-import LeftPagination from '../LeftPagination/LeftPagination'
+import RightPaginationBtn from '../RightPaginationBtn/RightPaginationBtn'
+import LeftPaginationBtn from '../LeftPaginationBtn/LeftPaginationBtn'
 import LogInAlertModal from '../LogInAlertModal/LogInAlertModal';
 import Overlay from '../Overlay/Overlay'
 
@@ -236,8 +236,8 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
 
     <div className='ProductWrapperBottSec-button-container'>
         <div className='ProductWrapperBottSec-icon-wrapper'>
-             <LeftPagination onLeft={handlePrev}/>
-             <RightPagination onRight={handleNext}/>
+             <LeftPaginationBtn onLeft={handlePrev}/>
+             <RightPaginationBtn onRight={handleNext}/>
         </div>
     </div>
 

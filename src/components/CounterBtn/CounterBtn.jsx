@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import './ProductCounter.css'
+import './CounterBtn.css'
 import ArrowDropDownCircleRoundedIcon from '@mui/icons-material/ArrowDropDownCircleRounded';
 import { useState } from 'react';
 
-export default function ProductCounter({ count , onShowModal , selectedCount , mainID}) {
+export default function CounterBtn({ count , onShowModal , selectedCount , mainID}) {
   const[productSelectedCount , setProductSelectedCount] = useState(1)
   const[productMaxCount , setProductMaxCount] = useState(1)
   const[productID , setProductID] = useState(1)
@@ -59,10 +59,10 @@ export default function ProductCounter({ count , onShowModal , selectedCount , m
   } , [mainID])
 
   return (
-    <div className='ProductCounter-container'>
-        <ArrowDropDownCircleRoundedIcon className='ProductCounter-down-arrow' onClick={decreaseCount}/>
-        <span className='ProductCounter-span'>{productSelectedCount}</span>
-        <ArrowDropDownCircleRoundedIcon className='ProductCounter-up-arrow' onClick={increaseCount}/>
+    <div className='CounterBtn-container'>
+        <ArrowDropDownCircleRoundedIcon className='CounterBtn-down-arrow' onClick={decreaseCount}/>
+        <span className='CounterBtn-span'>{productSelectedCount}</span>
+        <ArrowDropDownCircleRoundedIcon className='CounterBtn-up-arrow' onClick={increaseCount}/>
     </div>
   )
 }

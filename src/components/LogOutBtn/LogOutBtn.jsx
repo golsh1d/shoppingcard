@@ -1,11 +1,11 @@
 import React from 'react'
-import './NavAccardeonBtn.css'
+import './LogOutBtn.css'
 import { useEffect , useRef , useState} from 'react'
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 
 
-export default function NavAccardeonBtn({ onLogOut }) {
+export default function LogOutBtn({ onLogOut }) {
   const[usernameInfo, setUserNameInfo] = useState("")  
 
   let loginBtn = useRef()   
@@ -14,11 +14,11 @@ export default function NavAccardeonBtn({ onLogOut }) {
   function getLocalStorage() {
     let webAppereance = localStorage.getItem("mode");
     if (webAppereance === "dark") {
-      loginBtn.current.classList.add("NavAccardeonBtn-container-dark");
-      logOutSubMenu.current.classList.add("NavAccardeonBtn-logout-sub-menu-dark");
+      loginBtn.current.classList.add("LogOutBtn-container-dark");
+      logOutSubMenu.current.classList.add("LogOutBtn-logout-sub-menu-dark");
     } else {
-      loginBtn.current.classList.remove("NavAccardeonBtn-container-dark");
-      logOutSubMenu.current.classList.remove("NavAccardeonBtn-logout-sub-menu-dark");
+      loginBtn.current.classList.remove("LogOutBtn-container-dark");
+      logOutSubMenu.current.classList.remove("LogOutBtn-logout-sub-menu-dark");
     }
   }  
 
@@ -70,13 +70,13 @@ export default function NavAccardeonBtn({ onLogOut }) {
   } , [usernameInfo])  
 
   return (
-    <div className='NavAccardeonBtn-container' ref={loginBtn} onMouseLeave={hideLogOutMenu}>
-        <span className='NavAccardeonBtn-title'>{usernameInfo}</span>
-        <ExpandMoreRoundedIcon className='NavAccardeonBtn-chevron' onClick={showLogOutMenu}/>
+    <div className='LogOutBtn-container' ref={loginBtn} onMouseLeave={hideLogOutMenu}>
+        <span className='LogOutBtn-title'>{usernameInfo}</span>
+        <ExpandMoreRoundedIcon className='LogOutBtn-chevron' onClick={showLogOutMenu}/>
 
-        <div className='NavAccardeonBtn-logout-sub-menu' ref={logOutSubMenu} onClick={logOutClicked}>
-            <span className='NavAccardeonBtn-logout-span'>logOut</span>
-            <LogoutRoundedIcon className='NavAccardeonBtn-logout-icon'/>
+        <div className='LogOutBtn-logout-sub-menu' ref={logOutSubMenu} onClick={logOutClicked}>
+            <span className='LogOutBtn-logout-span'>logOut</span>
+            <LogoutRoundedIcon className='LogOutBtn-logout-icon'/>
         </div>
     </div>
   )

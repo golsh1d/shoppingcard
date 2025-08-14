@@ -1,4 +1,4 @@
-.NavSimpleBtn-container {
+.LogInBtn-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,12 +10,12 @@
     color: #000;
 }
 
-.NavSimpleBtn-container-dark {
+.LogInBtn-container-dark {
     color: #fff;
 }
 
 @media screen and (max-width : 768px){
-    .NavSimpleBtn-container {
+    .LogInBtn-container {
         width: 130px;
         margin-left : 12px;
         font-size: 16px;
@@ -25,7 +25,7 @@
 }
 
 @media screen and (min-width : 768px){
-    .NavSimpleBtn-container {
+    .LogInBtn-container {
         width: 150px;
         margin-left : 16px;
         font-size: 18px;

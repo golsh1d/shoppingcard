@@ -2,11 +2,11 @@ import React from 'react'
 import './Nav.css'
 import { Link } from 'react-router-dom'
 import { useRef , useEffect , useState } from 'react';
-import DarkOrLightMode from '../DarkOrLightMode/DarkOrLightMode';
+import DarkOrLightBtn from '../DarkOrLightBtn/DarkOrLightBtn'
 import SideCard from '../SideCard/SideCard';
 import Overlay from '../Overlay/Overlay';
-import NavAccardeonBtn from '../NavAccardeonBtn/NavAccardeonBtn';
-import NavSimpleBtn from '../NavSimpleBtn/NavSimpleBtn';
+import LogOutBtn from '../LogOutBtn/LogOutBtn'
+import LogInBtn from '../LogInBtn/LogInBtn';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded';
 import MaxCountAlertModal from '../MaxCountAlertModal/MaxCountAlertModal';
@@ -159,10 +159,10 @@ export default function Nav() {
                 </ul>
             </div>
             <div className='Nav-right'>
-                <DarkOrLightMode />
+                <DarkOrLightBtn />
                 {isLogIn ?
-                  <NavAccardeonBtn onLogOut={showModal}/> :
-                  <NavSimpleBtn />
+                  <LogOutBtn onLogOut={showModal}/> :
+                  <LogInBtn />
                 }
             </div>
         </nav>

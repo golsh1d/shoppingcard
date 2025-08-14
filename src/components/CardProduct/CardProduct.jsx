@@ -2,7 +2,7 @@ import React from 'react'
 import './CardProduct.css'
 import { useRef , useEffect , useState } from 'react';
 import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded';
-import ProductCounter from '../ProductCounter/ProductCounter';
+import CounterBtn from '../CounterBtn/CounterBtn';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
 
@@ -62,7 +62,7 @@ export default function CardProduct({ productID , productTitle, productCount, pr
             <MonetizationOnRoundedIcon className='CardProduct-dollar-icon' ref={dollarIcon}/>
             </div>
             <div className='CardProduct-detail'>
-                <ProductCounter count={count} selectedCount={selectedCount} mainID={mainID} onShowModal={showModal}/>
+                <CounterBtn count={count} selectedCount={selectedCount} mainID={mainID} onShowModal={showModal}/>
                 <DeleteForeverRoundedIcon className='CardProduct-bin-icon' ref={binIcon}/>
             </div>
         </div>

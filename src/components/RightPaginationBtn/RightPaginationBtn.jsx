@@ -1,10 +1,10 @@
 import React from 'react'
-import './RightPagination.css'
+import './RightPaginationBtn.css'
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import { useEffect , useRef } from 'react';
 
-export default function RightPagination({ onRight }) {
-  let rightPagination = useRef()  
+export default function RightPaginationBtn({ onRight }) {
+  let RightPagination = useRef()  
 
   function moveToRight (){
     onRight()
@@ -13,9 +13,9 @@ export default function RightPagination({ onRight }) {
   function getLocalStorage() {
       let webAppereance = localStorage.getItem("mode");
       if (webAppereance === "dark") {
-          rightPagination.current.classList.add("RightPagination-container-dark");
+          RightPagination.current.classList.add("RightPaginationBtn-container-dark");
       } else {
-          rightPagination.current.classList.remove("RightPagination-container-dark");
+          RightPagination.current.classList.remove("RightPaginationBtn-container-dark");
   }}
       
   useEffect(() => {
@@ -33,8 +33,8 @@ export default function RightPagination({ onRight }) {
   }, []);  
   
   return (
-    <div className='RightPagination-container' ref={rightPagination} onClick={moveToRight}>
-        <ChevronRightRoundedIcon className='RightPagination-icon'/>
+    <div className='RightPaginationBtn-container' ref={RightPagination} onClick={moveToRight}>
+        <ChevronRightRoundedIcon className='RightPaginationBtn-icon'/>
     </div>
   )
 }

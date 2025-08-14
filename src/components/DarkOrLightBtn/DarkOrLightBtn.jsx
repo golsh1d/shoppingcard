@@ -1,10 +1,10 @@
 import React from 'react'
-import './DarkOrLightMode.css'
+import './DarkOrLightBtn.css'
 import { useState , useEffect } from 'react'
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 
-export default function DarkOrLightMode() {
+export default function DarkOrLightBtn() {
   const [showDarkIcon , setShowDarkIcon] = useState(null)
   const [showLightIcon , setShowLightIcon] = useState(null)
 
@@ -35,9 +35,9 @@ export default function DarkOrLightMode() {
   }  
 
   return (
-    <div className='DarkOrLightMode-container'>
-        {showDarkIcon && <DarkModeRoundedIcon className='DarkOrLightMode-dark-icon' onClick={darkIconClicked}/>}
-        {showLightIcon && <LightModeRoundedIcon className='DarkOrLightMode-light-icon' onClick={lightIconClicked}/>}
+    <div className='DarkOrLightBtn-container'>
+        {showDarkIcon && <DarkModeRoundedIcon className='DarkOrLightBtn-dark-icon' onClick={darkIconClicked}/>}
+        {showLightIcon && <LightModeRoundedIcon className='DarkOrLightBtn-light-icon' onClick={lightIconClicked}/>}
     </div>
   )
 }

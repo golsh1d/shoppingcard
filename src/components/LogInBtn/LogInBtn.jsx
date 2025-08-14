@@ -1,17 +1,17 @@
 import React from 'react'
-import './NavSimpleBtn.css'
+import './LogInBtn.css'
 import { useEffect , useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function NavSimpleBtn() {
+export default function LogInBtn() {
   let NavBtn = useRef()
 
   function getLocalStorage() {
     let webAppereance = localStorage.getItem("mode");
     if (webAppereance === "dark") {
-        NavBtn.current.classList.add("NavSimpleBtn-container-dark");
+        NavBtn.current.classList.add("LogInBtn-container-dark");
     } else {
-        NavBtn.current.classList.remove("NavSimpleBtn-container-dark");
+        NavBtn.current.classList.remove("LogInBtn-container-dark");
     }
   }
   
@@ -30,6 +30,6 @@ export default function NavSimpleBtn() {
   }, []);  
 
   return (
-    <Link className='NavSimpleBtn-container' to="/signing" ref={NavBtn}>SignUp/SignIn</Link>
+    <Link className='LogInBtn-container' to="/signing" ref={NavBtn}>SignUp/SignIn</Link>
   )
 }

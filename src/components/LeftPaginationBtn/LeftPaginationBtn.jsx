@@ -1,10 +1,10 @@
 import React from 'react'
-import './LeftPagination.css'
+import './LeftPaginationBtn.css'
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import { useEffect , useRef } from 'react';
 
-export default function LeftPagination({ onLeft }) {
-  let leftPagination = useRef()  
+export default function LeftPaginationBtn({ onLeft }) {
+  let LeftPagination = useRef()  
 
   function moveToLeft() {
     onLeft()
@@ -13,9 +13,9 @@ export default function LeftPagination({ onLeft }) {
   function getLocalStorage() {
     let webAppereance = localStorage.getItem("mode");
     if (webAppereance === "dark") {
-        leftPagination.current.classList.add("LeftPagination-container-dark");
+        LeftPagination.current.classList.add("LeftPaginationBtn-container-dark");
     } else {
-        leftPagination.current.classList.remove("LeftPagination-container-dark");
+        LeftPagination.current.classList.remove("LeftPaginationBtn-container-dark");
   }}
     
   useEffect(() => {
@@ -33,8 +33,8 @@ export default function LeftPagination({ onLeft }) {
   }, []);    
 
   return (
-    <div className='LeftPagination-container' ref={leftPagination} onClick={moveToLeft}>
-        <ChevronLeftRoundedIcon className='LeftPagination-icon'/>
+    <div className='LeftPaginationBtn-container' ref={LeftPagination} onClick={moveToLeft}>
+        <ChevronLeftRoundedIcon className='LeftPaginationBtn-icon'/>
     </div>
   )
 }

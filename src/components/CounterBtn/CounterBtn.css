@@ -1,23 +1,23 @@
-.ProductCounter-container{
+.CounterBtn-container{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.ProductCounter-span{
+.CounterBtn-span{
     padding: 2px 2px 0px 2px;
     font-size: 14px;
     font-weight: 400;
 }
 
-.ProductCounter-up-arrow,
-.ProductCounter-down-arrow{
+.CounterBtn-up-arrow,
+.CounterBtn-down-arrow{
     cursor: pointer;
     color: #D6A99D;
     width: 20px !important;
     height: 20px !important;
 }
 
-.ProductCounter-up-arrow{
+.CounterBtn-up-arrow{
     rotate: 180deg;
 }

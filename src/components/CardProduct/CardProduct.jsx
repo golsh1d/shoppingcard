@@ -26,6 +26,22 @@ export default function CardProduct({ productID , productTitle, productCount, pr
   function showModal(productMaxCount) {
     onShowModal(productMaxCount)
   }
+
+  function deleteproduct(mainID) {
+    console.log(mainID);
+
+    let localStorageArray = JSON.parse(localStorage.getItem('productInfo'))
+
+    let mainProductIndex = localStorageArray.findIndex(obj => {
+        return obj.productID === mainID
+    })
+
+    localStorageArray.splice(mainProductIndex , 1)
+
+    localStorage.setItem('productInfo' , JSON.stringify(localStorageArray))
+
+    window.dispatchEvent(new Event("productUpdated"))
+  }
         
   useEffect(() => {
     const handleStorageUpdate = () => {
@@ -63,7 +79,7 @@ export default function CardProduct({ productID , productTitle, productCount, pr
             </div>
             <div className='CardProduct-detail'>
                 <CounterBtn count={count} selectedCount={selectedCount} mainID={mainID} onShowModal={showModal}/>
-                <DeleteForeverRoundedIcon className='CardProduct-bin-icon' ref={binIcon}/>
+                <DeleteForeverRoundedIcon className='CardProduct-bin-icon' ref={binIcon} onClick={() => deleteproduct(mainID)}/>
             </div>
         </div>
     </div>

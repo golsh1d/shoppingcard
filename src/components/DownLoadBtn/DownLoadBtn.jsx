@@ -1,6 +1,9 @@
 import React from 'react'
 import './DownLoadBtn.css'
 import { useEffect , useRef } from 'react';
+import { jsPDF } from "jspdf"
+import "jspdf-autotable"
+import autoTable from 'jspdf-autotable';
 import CloudDownloadRoundedIcon from '@mui/icons-material/CloudDownloadRounded';
 
 export default function DownLoadBtn() {
@@ -13,6 +16,40 @@ export default function DownLoadBtn() {
       } else {
           downloadBtn.current.classList.remove("DownLoadBtn-container-dark");
   }}
+
+  function downLoadPDF() {
+    let localStorageArray = JSON.parse(localStorage.getItem('productInfo')) || []
+
+    if (localStorageArray.length > 0) {
+      const doc = new jsPDF()
+      let count = 0
+
+      doc.setFontSize(16)
+      doc.text("shopping card", 14, 15)
+
+      localStorageArray.map(obj => {
+        count = count + (obj.productPrice * obj.productSelectedCount)
+      })
+
+      const tableData = localStorageArray.map(obj => [
+        obj.productTitle,
+        obj.productPrice,
+        obj.productSelectedCount
+      ])
+
+      autoTable(doc, {
+        head: [["Title" , "Price" , "Count"]] , 
+        body: tableData,
+        startY: 25
+      })
+
+      const finalY = doc.lastAutoTable.finalY || 25
+      doc.setFontSize(14)
+      doc.text(`Total price : ${count}`, 14, finalY + 10)
+
+      doc.save("shopping-card.pdf")
+    }
+  }
             
   useEffect(() => {
     const handleStorageUpdate = () => {
@@ -29,7 +66,7 @@ export default function DownLoadBtn() {
   }, []); 
 
   return (
-    <button className='DownLoadBtn-container' ref={downloadBtn}>
+    <button className='DownLoadBtn-container' ref={downloadBtn} onClick={downLoadPDF}>
         <span className='DownLoadBtn-span'>Download As PDF</span>
         <CloudDownloadRoundedIcon className='DownLoadBtn-icon'/>
     </button>

@@ -84,6 +84,12 @@ export default function Card({ onShowModal }) {
   function showProducts() {
     checkIsLogin()
   }
+
+  function applyOffCode() {
+    if (totalPrice > 0) {
+        setTotalPrice(prev => prev - (prev * 0.2))
+    }
+  }
       
   useEffect(() => {
       const handleStorageUpdate = () => {
@@ -163,7 +169,7 @@ export default function Card({ onShowModal }) {
             <CardTotal totalPrice={totalPrice}/>
         </div>
         <div className='Card-off'>
-            <OffBtn />
+            <OffBtn onOff={applyOffCode}/>
         </div>
         <div className='Card-download'>
             <DownLoadBtn />

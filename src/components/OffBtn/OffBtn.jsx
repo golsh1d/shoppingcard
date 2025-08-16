@@ -2,8 +2,9 @@ import React from 'react'
 import './OffBtn.css'
 import { useEffect , useRef , useState } from 'react';
 
-export default function OffBtn() {
+export default function OffBtn({ onOff }) {
   const [offInputvalue , setOffInputValue] = useState("Off Code ...")  
+  const [isReadOnly , setIsReadOnly] = useState()  
 
   let btnInput = useRef()
 
@@ -15,7 +16,33 @@ export default function OffBtn() {
         btnInput.current.classList.remove("OffBtn-input-dark");
   }}
 
-  function btnClicked() {
+  function getIsOffAppliedFromLocalStorage() {
+    let localStorageOffApplied = JSON.parse(localStorage.getItem('offApplied')) || false
+
+    if (localStorageOffApplied) {
+      setIsReadOnly(true)
+    } else {
+      setIsReadOnly(false)
+    }
+  }
+
+  function applyOffCodewithEnter(event) {
+    if (event.key === 'Enter') {
+      if (offInputvalue.trim() === "off-20") {
+        onOff()
+        localStorage.setItem('offApplied' , true)
+        getIsOffAppliedFromLocalStorage()
+      }
+      setOffInputValue("Off Code ...")
+    }
+  }
+  
+  function applyOffCodeWithBtn() {
+    if (offInputvalue.trim() === "off-20") {
+      onOff()
+      localStorage.setItem('offApplied' , true)
+      getIsOffAppliedFromLocalStorage()
+    }
     setOffInputValue("Off Code ...")
   }
           
@@ -33,10 +60,14 @@ export default function OffBtn() {
     };
   }, []);   
 
+  useEffect(() => {
+    getIsOffAppliedFromLocalStorage()
+  } , [])
+
   return (
     <div className='OffBtn-container'>
-        <input type="text" className='OffBtn-input' ref={btnInput} value={offInputvalue} onChange={(event) => setOffInputValue(event.target.value)}/>
-        <button className='OffBtn-btn' onClick={btnClicked}>Apply</button>
+        <input type="text" className='OffBtn-input' ref={btnInput} value={offInputvalue} onChange={(event) => setOffInputValue(event.target.value)} onKeyPress={(event) => applyOffCodewithEnter(event)} readOnly={isReadOnly}/>
+        <button className='OffBtn-btn' onClick={applyOffCodeWithBtn}>Apply</button>
     </div>
   )
 }

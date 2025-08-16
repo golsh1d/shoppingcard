@@ -65,6 +65,7 @@ export default function SignUpForm({ onShowModal , onSignIn }) {
 
   function setCookie() {
     document.cookie = `username=${userNameInput}; expires=Thu, 18 Dec 2030 12:00:00 UTC; path=/`;
+    window.dispatchEvent(new Event("isLogInChanged"))
   }
 
   function validateInput() {

@@ -80,6 +80,7 @@ export default function Nav() {
     setIsLogOutModalShown(false)
     document.cookie = `username=; expires=Thu, 18 Dec 2000 12:00:00 UTC; path=/`;
     setIsLogIn(false) 
+    window.dispatchEvent(new Event("isLogInChanged"))
   }
 
   function showModal() {

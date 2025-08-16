@@ -83,17 +83,12 @@ export default function SingleProductWrapper({ id , onLogIn }) {
     }
   }
 
-  function checkIsLogin(productInfo) {
+  function checkIsLogin() {
     const username = getCookie('username')
     if(username) {
         onLogIn(true)
-    } else {
-        onLogIn(false)
-    }
-  }
 
-  function addBtnClicked() {
-    let mainProductInfo = allProductsInfo.find(obj => {
+        let mainProductInfo = allProductsInfo.find(obj => {
       if(obj.id == id) {
         return obj
       }
@@ -121,9 +116,14 @@ export default function SingleProductWrapper({ id , onLogIn }) {
             localStorage.setItem('productInfo' , JSON.stringify(localStorageArray))
             window.dispatchEvent(new Event("productUpdated"))
         }
-
-        checkIsLogin(productInfo)
     }
+    } else {
+        onLogIn(false)
+    }
+  }
+
+  function addBtnClicked() {
+    checkIsLogin()
   }
 
   useEffect(() => {

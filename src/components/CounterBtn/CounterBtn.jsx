@@ -30,7 +30,7 @@ export default function CounterBtn({ count , onShowModal , selectedCount , mainI
     if (count <= productMaxCount) {
       setProductSelectedCount(count)
       setSelectedCountToLocalStorage(count)
-      window.dispatchEvent(new Event("lsSelectedCountUpdated"))
+      window.dispatchEvent(new Event("productUpdated"))
     } else {
       onShowModal(productMaxCount)
     }
@@ -42,7 +42,7 @@ export default function CounterBtn({ count , onShowModal , selectedCount , mainI
     if (count) {
         setProductSelectedCount(count)
         setSelectedCountToLocalStorage(count)
-        window.dispatchEvent(new Event("lsSelectedCountUpdated"))
+        window.dispatchEvent(new Event("productUpdated"))
     }
   }
 

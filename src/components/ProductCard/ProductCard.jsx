@@ -34,17 +34,12 @@ export default function ProductCard({id , title , img , rate , price , des, coun
     }
   }
 
-  function checkIsLogin(productInfo) {
+  function checkIsLogin() {
     const username = getCookie('username')
     if(username) {
         onLogIn(true)
-    } else {
-        onLogIn(false)
-    }
-  }
 
-  function addBtnClicked() {
-    if (id && title && price && count && userSelectedCount) {
+        if (id && title && price && count && userSelectedCount) {
         let productInfo = {
             productID : id,
             productTitle : title,
@@ -67,8 +62,15 @@ export default function ProductCard({id , title , img , rate , price , des, coun
             window.dispatchEvent(new Event("productUpdated"))
         }
 
-        checkIsLogin(productInfo)
     }
+    
+    } else {
+        onLogIn(false)
+    }
+  }
+
+  function addBtnClicked() {
+    checkIsLogin()
   }
     
   useEffect(() => {

@@ -5,6 +5,7 @@ import CardProduct from '../CardProduct/CardProduct';
 import OffBtn from '../OffBtn/OffBtn';
 import DownLoadBtn from '../DownLoadBtn/DownLoadBtn';
 import CardTotal from '../CardTotal/CardTotal';
+import RemoveShoppingCartRoundedIcon from '@mui/icons-material/RemoveShoppingCartRounded';
 
 export default function Card({ onShowModal }) {
   const [allProductsInfo , setAllProductsInfo] = useState([])
@@ -26,11 +27,14 @@ export default function Card({ onShowModal }) {
         cardTotal.current.classList.remove("Card-total-dark");
   }}
 
+  // run when component mount and ls got updated
   function getProductInfoFromLocalStorage() {
-    let allProducts = JSON.parse(localStorage.getItem('productInfo'))
+    let allProducts = JSON.parse(localStorage.getItem('productInfo')) || []
 
-    if (allProducts) {
+    if (allProducts.length > 0) {
         setAllProductsInfo(allProducts)
+    } else {
+        setAllProductsInfo([])
     }
   }
 
@@ -38,10 +42,11 @@ export default function Card({ onShowModal }) {
     onShowModal(productMaxCount)
   }
 
+  // run when component mount and ls got updated and allproducts got updated
   function calcTotalPrice() {
-    let localStorageArray = JSON.parse(localStorage.getItem('productInfo'))
+    let localStorageArray = JSON.parse(localStorage.getItem('productInfo')) || []
 
-    if (localStorageArray) {
+    if (localStorageArray.length > 0 && allProductsInfo.length > 0) {
         let totalPrice = 0
 
         localStorageArray.map(obj => {
@@ -49,7 +54,35 @@ export default function Card({ onShowModal }) {
         })
         
         setTotalPrice(totalPrice)
+    } else if (allProductsInfo.length === 0) {
+        setTotalPrice(0)
     }
+
+  }
+
+  function getCookie(name) {
+    const cookies = document.cookie.split(';')
+    for (let i = 0 ; i < cookies.length ; i++) {
+        const c = cookies[i].trim();
+        if (c.startsWith(name + '=')) {
+            return c.substring(name.length + 1)
+        }
+    }
+  }
+
+  function checkIsLogin() {
+    const username = getCookie('username')
+
+    if (username === undefined) {
+        setAllProductsInfo([])
+    } else {
+        getProductInfoFromLocalStorage()
+    }
+  }
+
+  // run when component mount and cookie got updated 
+  function showProducts() {
+    checkIsLogin()
   }
       
   useEffect(() => {
@@ -81,22 +114,34 @@ export default function Card({ onShowModal }) {
   } , [])
 
   useEffect(() => {
-    calcTotalPrice()
-  } , [allProductsInfo])
+    getProductInfoFromLocalStorage()
+  } , [])
 
   useEffect(() => {
-      const handleStorageUpdate = () => {
-          calcTotalPrice();
+      const handleCookieUpdate = () => {
+          showProducts();
       };
       
-      calcTotalPrice();
+      showProducts();
       
-      window.addEventListener("lsSelectedCountUpdated", handleStorageUpdate);
+      window.addEventListener("isLogInChanged", handleCookieUpdate);
       
       return () => {
-          window.removeEventListener("lsSelectedCountUpdated", handleStorageUpdate);
+          window.removeEventListener("isLogInChanged", handleCookieUpdate);
       };
-  }, []);  
+  }, []);   
+
+  useEffect(() => {
+    showProducts()
+  } , [])
+
+  useEffect(() => {
+    calcTotalPrice()
+  } , [])
+
+  useEffect(() => {
+    calcTotalPrice()
+  } , [allProductsInfo])  
 
   return (
     <div className='Card-container' ref={card}>
@@ -105,9 +150,14 @@ export default function Card({ onShowModal }) {
             <div className='Card-pay-btn'>Pay</div>
         </div>
         <div className='Card-products' ref={cardProducts}>
-            {allProductsInfo && allProductsInfo.map(obj => (
+            {allProductsInfo.length > 0
+            ? 
+            allProductsInfo.map(obj => (
                 <CardProduct {...obj} key={obj.id} onShowModal={showModal}/>
-            ))}
+            )) 
+            :
+            <RemoveShoppingCartRoundedIcon className='Card-emptyCard-icon'/>
+            }
         </div>
         <div className='Card-total' ref={cardTotal}>
             <CardTotal totalPrice={totalPrice}/>

@@ -31,7 +31,6 @@
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    object-fit: fill;
     overflow: hidden;
 }
 
@@ -122,6 +121,10 @@
         margin-bottom: 8px;
    }
 
+   .ProductCard-img{
+        object-fit: fill;
+    }
+
    .ProductCard-detail{
         height: 100px;
     }
@@ -168,6 +171,10 @@
         margin-bottom: 12px;
    }
 
+   .ProductCard-img{
+        object-fit: contain;
+    }
+
    .ProductCard-detail{
         height: 130px;
     }
@@ -202,4 +209,10 @@
         width: 32px !important;
         height: 32px !important;
    }
+}
+
+@media screen and (min-width : 1280px){
+    .ProductCard-img{
+        object-fit: fill;
+    }
 }

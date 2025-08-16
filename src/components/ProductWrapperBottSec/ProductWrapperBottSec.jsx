@@ -202,16 +202,13 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
         breakpoints={{
           0 : {
             slidesPerView : 1,
-          }, 
+          },
           500 : {
-            slidesPerView : 2,
+            slidesPerView : 1.5,
           } ,
-          768 : {
-            slidesPerView : 1,
-          } ,
-          998 : {
-            slidesPerView : 2,
-          } ,
+          1024 : {
+            slidesPerView : 2
+          },
           1280 : {
             slidesPerView : 4,
           } 

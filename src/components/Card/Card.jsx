@@ -172,7 +172,7 @@ export default function Card({ onShowModal }) {
             <OffBtn onOff={applyOffCode}/>
         </div>
         <div className='Card-download'>
-            <DownLoadBtn />
+            <DownLoadBtn totalPrice={totalPrice}/>
         </div>
     </div>
   )

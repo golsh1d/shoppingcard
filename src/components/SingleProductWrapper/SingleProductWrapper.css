@@ -117,7 +117,7 @@
 
    .SingleProductWrapper-left-section{
       width: 100%;
-      height: 30%;
+      height: 35%;
       margin-right: 0;
       margin-top: 24px;
    }
@@ -160,7 +160,7 @@
 
    .SingleProductWrapper-right-section{
       width: 100%;
-      height: 70%;
+      height: 65%;
    }
 
    .SingleProductWrapper-img{
@@ -169,7 +169,7 @@
    
    .SingleProductWrapper-swiper-wrapper{
       height: calc(100% - (100% / 1.4));
-      padding-top: 12px;
+      padding-top: 24px;
    }
 }
 

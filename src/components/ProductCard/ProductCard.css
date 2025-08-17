@@ -211,6 +211,56 @@
    }
 }
 
+@media screen and (min-width : 768px) and (min-height : 1024px){
+   .ProductCard-container{
+        padding: 12px;
+    } 
+
+    .ProductCard-img-wrapper{
+        height: calc(100% - 130px);
+        margin-bottom: 12px;
+   }
+
+   .ProductCard-img{
+        object-fit: fill;
+    }
+
+   .ProductCard-detail{
+        height: 130px;
+    }
+
+   .ProductCard-title{
+        font-size: 18px;
+        font-weight: 500;
+   }
+
+   .ProductCard-rate-span,
+   .ProductCard-price-span{
+        font-size: 16px;
+        font-weight: 500;
+   }
+
+   .ProductCard-rate-icon,
+   .ProductCard-dollar-icon{
+        width: 19px !important;
+        height: 19px !important;
+   }
+
+   .ProductCard-des{
+        height: 50px;
+        font-size: 14px;
+        font-weight: 400;
+        -webkit-line-clamp: 3;        
+        line-height: 16px;
+        max-height: 49.8px;
+   }
+
+   .ProductCard-btn-icon{
+        width: 32px !important;
+        height: 32px !important;
+   }
+}
+
 @media screen and (min-width : 1280px){
     .ProductCard-img{
         object-fit: fill;

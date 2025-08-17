@@ -169,7 +169,7 @@ export default function Card({ onShowModal }) {
             <CardTotal totalPrice={totalPrice}/>
         </div>
         <div className='Card-off'>
-            <OffBtn onOff={applyOffCode}/>
+            <OffBtn onOff={applyOffCode} totalPrice={totalPrice}/>
         </div>
         <div className='Card-download'>
             <DownLoadBtn totalPrice={totalPrice}/>

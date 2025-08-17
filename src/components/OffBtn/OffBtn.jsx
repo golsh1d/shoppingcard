@@ -2,9 +2,10 @@ import React from 'react'
 import './OffBtn.css'
 import { useEffect , useRef , useState } from 'react';
 
-export default function OffBtn({ onOff }) {
+export default function OffBtn({ onOff , totalPrice }) {
   const [offInputvalue , setOffInputValue] = useState("Off Code ...")  
   const [isReadOnly , setIsReadOnly] = useState()  
+  const [price , setPrice] = useState()
 
   let btnInput = useRef()
 
@@ -28,7 +29,7 @@ export default function OffBtn({ onOff }) {
 
   function applyOffCodewithEnter(event) {
     if (event.key === 'Enter') {
-      if (offInputvalue.trim() === "off-20") {
+      if (offInputvalue.trim() === "off-20" && price > 0) {
         onOff()
         localStorage.setItem('offApplied' , true)
         getIsOffAppliedFromLocalStorage()
@@ -38,7 +39,7 @@ export default function OffBtn({ onOff }) {
   }
   
   function applyOffCodeWithBtn() {
-    if (offInputvalue.trim() === "off-20") {
+    if (offInputvalue.trim() === "off-20" && price > 0) {
       onOff()
       localStorage.setItem('offApplied' , true)
       getIsOffAppliedFromLocalStorage()
@@ -63,6 +64,10 @@ export default function OffBtn({ onOff }) {
   useEffect(() => {
     getIsOffAppliedFromLocalStorage()
   } , [])
+
+  useEffect(() => {
+    setPrice(totalPrice)
+  } , [totalPrice])
 
   return (
     <div className='OffBtn-container'>

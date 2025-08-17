@@ -190,6 +190,7 @@ export default function SingleProductWrapper({ id , onLogIn }) {
           </div>
         </div>
       </div>
+
       <div className='SingleProductWrapper-swiper-wrapper'>
         <Swiper
         slidesPerView={3}
@@ -204,8 +205,11 @@ export default function SingleProductWrapper({ id , onLogIn }) {
             slidesPerView : 3,
           }, 
           500 : {
-            slidesPerView : 5,
+            slidesPerView : 4,
           } ,
+          768 : {
+            slidesPerView : 2 ,
+          },
           1280 : {
             slidesPerView : 7,
           } 

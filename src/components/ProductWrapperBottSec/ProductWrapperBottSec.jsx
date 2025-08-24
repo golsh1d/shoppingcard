@@ -206,8 +206,11 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
           500 : {
             slidesPerView : 1.5,
           } ,
+          768 : {
+            slidesPerView : 1,
+          },
           1024 : {
-            slidesPerView : 2
+            slidesPerView : 2,
           },
           1280 : {
             slidesPerView : 4,

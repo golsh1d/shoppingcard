@@ -93,8 +93,9 @@ export default function Nav() {
 
   function getCountOfLocalStorageObj() {
     let allObjs = JSON.parse(localStorage.getItem('productInfo'))
+    const username = getCookie('username')
 
-    if (allObjs) {
+    if (allObjs && username) {
       setLsCount(allObjs.length)
     } else {
       setLsCount(0)
@@ -142,6 +143,20 @@ export default function Nav() {
     
     return () => {
         window.removeEventListener("productUpdated" , handleStorageUpdate)
+    }
+  } , [])
+
+  useEffect(() => {
+    const handleStorageUpdate = () => {
+        getCountOfLocalStorageObj()
+    }
+
+    getCountOfLocalStorageObj()
+    
+    window.addEventListener("isLogInChanged" , handleStorageUpdate)
+    
+    return () => {
+        window.removeEventListener("isLogInChanged" , handleStorageUpdate)
     }
   } , [])
 

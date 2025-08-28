@@ -7,7 +7,7 @@
 
 @media screen and (max-width : 768px){
     .Home-main-container{
-        height: calc(100vh - 55px);
+        height: min-content;
         padding: 12px;
     }
 }

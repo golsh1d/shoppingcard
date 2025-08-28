@@ -11,6 +11,7 @@ import Overlay from '../../components/Overlay/Overlay'
 export default function SingleProduct() {
   const[isLogIn , setIsLogIn] = useState(null)
   const[overlayStyle, setOverlayStyle] = useState(null) 
+  const[goToNavTrigger, setGotoNavTrigger] = useState(null) 
   
   let { productID } = useParams()
 
@@ -27,13 +28,17 @@ export default function SingleProduct() {
     setIsLogIn(true)
     setOverlayStyle({display : "none"})
   }
+
+  function scrollToNav() {
+    setGotoNavTrigger(prev => prev + 1)
+  }
   
   return (
     <>
-      <Nav />
+      <Nav goToNavTrigger={goToNavTrigger}/>
       <div className='SingleProduct-main-container'>
         <CardWrapper />
-        <SingleProductWrapper id={productID} onLogIn={userLogIn}/>
+        <SingleProductWrapper id={productID} onLogIn={userLogIn} onScrollToNav={scrollToNav}/>
       </div>
       {isLogIn === false && <LogInAlertModal/>}
       <Overlay styleProp={overlayStyle} onOverlay={hideModal}/>

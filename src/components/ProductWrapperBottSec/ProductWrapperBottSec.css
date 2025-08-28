@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-.swiper {
+.mySwiper {
   width: 100%;
   height: 100%;
 }
@@ -38,7 +38,7 @@
 @media screen and (max-width : 768px){
     .ProductWrapperBottSec-container{
         padding: 8px;
-        height: calc(100% - 90px);
+        height: 2500px;
     }
 
     .ProductWrapperBottSec-button-container{

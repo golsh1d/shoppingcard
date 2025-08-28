@@ -1,5 +1,4 @@
 .ProductsWrapper {
-    height: 100%;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
 }
@@ -12,17 +11,20 @@
 @media screen and (max-width : 768px) {
    .ProductsWrapper {
       width: 100%;
+      height: min-content;
    } 
 }
 
 @media screen and (min-width : 768px) {
    .ProductsWrapper {
       width: calc(100% - 266px);
+      height: 100%;
     } 
 }
 
 @media screen and (min-width : 1280px) {
     .ProductsWrapper {
       width: calc(100% - 316px);
+      height: 100%;
    } 
 }

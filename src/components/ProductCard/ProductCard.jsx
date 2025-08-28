@@ -6,7 +6,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { useEffect , useRef , useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ProductCard({id , title , img , rate , price , des, count, userSelectedCount, onLogIn}) {
+export default function ProductCard({id , title , img , rate , price , des, count, userSelectedCount, onLogIn, onScrollToNav}) {
 
   let cardContainer = useRef()  
   let dollarIcon = useRef()  
@@ -67,6 +67,8 @@ export default function ProductCard({id , title , img , rate , price , des, coun
     } else {
         onLogIn(false)
     }
+
+    onScrollToNav()
   }
 
   function addBtnClicked() {

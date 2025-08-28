@@ -4,7 +4,7 @@ import { useEffect , useRef } from 'react';
 import ProductsWrapperTopSec from '../ProductsWrapperTopSec/ProductsWrapperTopSec'
 import ProductWrapperBottSec from '../ProductWrapperBottSec/ProductWrapperBottSec';
 
-export default function ProductsWrapper() {
+export default function ProductsWrapper({ onScrollToNav }) {
   const[allReorderTrigger,setAllReorderTrigger] = useState(0)
   const[bagsReorderTrigger,setBagsReorderTrigger] = useState(0)
   const[shoesReorderTrigger,setShoesReorderTrigger] = useState(0)
@@ -61,6 +61,10 @@ export default function ProductsWrapper() {
     setSearchContent(productTitle)
   }
 
+  function scrollToNav() {
+    onScrollToNav()
+  }
+
   useEffect(() => {
     const handleStorageUpdate = () => {
       getLocalStorage();
@@ -78,7 +82,7 @@ export default function ProductsWrapper() {
   return (
     <div className='ProductsWrapper' ref={ProductsWrapper}>
         <ProductsWrapperTopSec onAllReorder={handleAllReorder} onBagsReorder={handleBagsReorder} onShoesReorder={handleShoesReorder} onAccReorder={handleAccReorder} onBeltReorder={handleBeltReorder}  onSortPopularProducts={handlePopularSort} onSortEarliestProducts={handleEarliestSort}  onSortLatestProducts={handleLatestSort} onSearchInProducts={handleSearch}/>
-        <ProductWrapperBottSec allReorderTrigger={allReorderTrigger} bagsReorderTrigger={bagsReorderTrigger} shoesReorderTrigger={shoesReorderTrigger} accReorderTrigger={accReorderTrigger} beltsReorderTrigger={beltsReorderTrigger}  popularSortTrigger={popularSortTrigger} earliestSortTrigger={earliestSortTrigger} latestSortTrigger={latestSortTrigger} searchContent={searchContent}/>
+        <ProductWrapperBottSec allReorderTrigger={allReorderTrigger} bagsReorderTrigger={bagsReorderTrigger} shoesReorderTrigger={shoesReorderTrigger} accReorderTrigger={accReorderTrigger} beltsReorderTrigger={beltsReorderTrigger}  popularSortTrigger={popularSortTrigger} earliestSortTrigger={earliestSortTrigger} latestSortTrigger={latestSortTrigger} searchContent={searchContent} onScrollToNav={scrollToNav}/>
     </div>
   )
 }

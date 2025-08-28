@@ -11,7 +11,7 @@ import LogOutModal from '../LogOutModal/LogOutModal';
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded';
 import MaxCountAlertModal from '../MaxCountAlertModal/MaxCountAlertModal';
 
-export default function Nav() {
+export default function Nav({ goToNavTrigger }) {
   const[isLogIn, setIsLogIn] = useState(false)
   const[sideCardStyle, setSideCardStyle] = useState(null)
   const[sideOverlayStyle, setSideOverlayStyle] = useState(null)
@@ -159,6 +159,10 @@ export default function Nav() {
         window.removeEventListener("isLogInChanged" , handleStorageUpdate)
     }
   } , [])
+
+  useEffect(() => {
+    Nav.current.scrollIntoView({ behavior : "smooth" , block : "start" })
+  } , [goToNavTrigger])
 
   return (
     <>

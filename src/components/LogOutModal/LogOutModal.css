@@ -1,7 +1,6 @@
 .LogOutModal-container{
     background-color: #fff;
     position: absolute;
-    top: 50%;
     left: 50%;
     transform: translate(-50% , -50%);
     border: 1px solid #d9d9d9;
@@ -45,6 +44,7 @@
 
 @media screen and (max-width : 768px){
     .LogOutModal-container{
+        top: 50vh;
         width: 300px;
         padding: 12px;
         font-size: 16px;
@@ -63,6 +63,7 @@
 
 @media screen and (min-width : 768px){
     .LogOutModal-container{
+        top: 50%;
         width: 350px;
         padding: 16px;
         font-size: 18px;

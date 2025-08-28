@@ -69,6 +69,7 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
   const[overlayStyle, setOverlayStyle] = useState(null) 
   const[rows, setRows] = useState(1) 
   const[swiperKey, setSwiperKey] = useState(0) 
+  const[category, setCategory] = useState("") 
 
   let swiperRef = useRef(null)
   let productWrapperBottSec = useRef(null)
@@ -125,6 +126,12 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     onScrollToNav()
   }
 
+  function getBackToPrevHeight() {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        productWrapperBottSec.current.style.height = "3000px"
+    }
+  }
+
   useEffect(() => {
     let searchedProduct = []
 
@@ -136,10 +143,17 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     
     if(searchedProduct.length === 0){
       setSwiperIsShown(false)
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        productWrapperBottSec.current.style.height = "100vh"
+      }
+      setCategory("")
     } else {
       setFinalProductsInfo(searchedProduct)
       setSwiperIsShown(true)
-
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        productWrapperBottSec.current.style.height = "min-content"
+      }
+      setCategory("")
     }
 
   } , [searchContent])
@@ -147,22 +161,28 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
   useEffect(() => {
     let popularProducts = [...finalProductsInfo].sort((a , b) => b.rate - a.rate)
 
-    setFinalProductsInfo(popularProducts)
-    setSwiperIsShown(true)
+    if (category) {
+      setFinalProductsInfo(popularProducts)
+      setSwiperIsShown(true)
+    }
   } , [popularSortTrigger])
 
   useEffect(() => {
     let earliestProducts = [...finalProductsInfo].sort((a , b) => b.id - a.id)
 
-    setFinalProductsInfo(earliestProducts)
-    setSwiperIsShown(true)
+    if (category) {
+      setFinalProductsInfo(earliestProducts)
+      setSwiperIsShown(true)
+    }
   } , [earliestSortTrigger])
 
   useEffect(() => {
     let latestProducts = [...finalProductsInfo].sort((a , b) => a.id - b.id)
 
-    setFinalProductsInfo(latestProducts)
-    setSwiperIsShown(true)
+    if (category) {
+      setFinalProductsInfo(latestProducts)
+      setSwiperIsShown(true)
+    }
   } , [latestSortTrigger])
 
   useEffect(() => {
@@ -179,6 +199,8 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     })
     setFinalProductsInfo(allBelt)
     setSwiperIsShown(true)
+    getBackToPrevHeight()
+    setCategory("belt")
   } , [beltsReorderTrigger])
 
   useEffect(() => {
@@ -190,6 +212,8 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     })
     setFinalProductsInfo(allAcc)
     setSwiperIsShown(true)
+    getBackToPrevHeight()
+    setCategory("acc")
   } , [accReorderTrigger])
 
   useEffect(() => {
@@ -201,6 +225,8 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     })
     setFinalProductsInfo(allShoes)
     setSwiperIsShown(true)
+    getBackToPrevHeight()
+    setCategory("shoe")
   } , [shoesReorderTrigger])
 
   useEffect(() => {
@@ -212,11 +238,15 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     })
     setFinalProductsInfo(allBags)
     setSwiperIsShown(true)
+    getBackToPrevHeight()
+    setCategory("bag")
   } , [bagsReorderTrigger])
 
   useEffect(() => {
     setFinalProductsInfo(allProductsInfo)
     setSwiperIsShown(true)
+    getBackToPrevHeight()
+    setCategory("all")
   } , [allReorderTrigger])
 
   useEffect(() => {
@@ -240,6 +270,11 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
 
     window.addEventListener("resize" , checkSize)
     return () => window.removeEventListener("resize" , checkSize)
+  } , [])
+
+  useEffect(() => {
+    getBackToPrevHeight()
+    setCategory("all")
   } , [])
 
   return (

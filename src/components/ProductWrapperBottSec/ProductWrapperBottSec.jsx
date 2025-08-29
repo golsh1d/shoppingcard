@@ -127,8 +127,10 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
   }
 
   function getBackToPrevHeight() {
-    if (window.matchMedia("(max-width: 768px)").matches) {
+    if (window.matchMedia("(max-width: 767px)").matches) {
         productWrapperBottSec.current.style.height = "3000px"
+      } else {
+        productWrapperBottSec.current.style.height = "calc(100% - 110px) !important"
     }
   }
 

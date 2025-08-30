@@ -148,7 +148,7 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     if(searchedProduct.length === 0){
       setSwiperIsShown(false)
       if (window.matchMedia("(max-width: 767px)").matches) {
-        productWrapperBottSec.current.style.height = "815px"
+        productWrapperBottSec.current.style.height = "100vh"
       } else if (window.matchMedia("(width: 768px)").matches) {
         productWrapperBottSec.current.style.height = "calc(100% - 110px)"
       } else if (window.matchMedia("(min-width: 769px)").matches) {

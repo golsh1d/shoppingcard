@@ -31,6 +31,18 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+      const updateSwiper = () => {
+        window.location.reload()
+      };
+  
+      window.addEventListener("resize", updateSwiper);
+  
+      return () => {
+        window.removeEventListener("resize", updateSwiper);
+      };
+  }, []);
+
   return (
     <section className="App-container" ref={app}>
       {allRoutes}

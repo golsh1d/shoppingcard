@@ -128,9 +128,11 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
 
   function getBackToPrevHeight() {
     if (window.matchMedia("(max-width: 767px)").matches) {
-        productWrapperBottSec.current.style.height = "3000px"
-      } else {
-        productWrapperBottSec.current.style.height = "calc(100% - 110px) !important"
+      productWrapperBottSec.current.style.height = "3000px"
+    } else if (window.matchMedia("(min-width: 769px)").matches) {
+      productWrapperBottSec.current.style.height = "calc(100% - 110px)"
+    } else if (window.matchMedia("(width: 768px)").matches){
+      productWrapperBottSec.current.style.height = "calc(100% - 110px)"
     }
   }
 
@@ -145,16 +147,24 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     
     if(searchedProduct.length === 0){
       setSwiperIsShown(false)
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        productWrapperBottSec.current.style.height = "100vh"
-      }
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        productWrapperBottSec.current.style.height = "815px"
+      } else if (window.matchMedia("(width: 768px)").matches) {
+        productWrapperBottSec.current.style.height = "calc(100% - 110px)"
+      } else if (window.matchMedia("(min-width: 769px)").matches) {
+        productWrapperBottSec.current.style.height = "calc(100% - 110px)"
+      } 
       setCategory("")
     } else {
       setFinalProductsInfo(searchedProduct)
       setSwiperIsShown(true)
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        productWrapperBottSec.current.style.height = "min-content"
-      }
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        productWrapperBottSec.current.style.height = "3000px"
+      } else if (window.matchMedia("(width: 768px)").matches) {
+        productWrapperBottSec.current.style.height = "calc(100% - 110px)"
+      } else if (window.matchMedia("(min-width: 769px)").matches) {
+        productWrapperBottSec.current.style.height = "calc(100% - 110px)"
+      } 
       setCategory("")
     }
 
@@ -284,6 +294,10 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     <div className='ProductWrapperBottSec-container' ref={productWrapperBottSec}>
       {swiperIsShown ?
       <Swiper
+        ref={swiperRef}
+        observer={true}
+        observeParents={true}
+        observeSlideChildren={true}
         key={swiperKey}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         cssMode={true}

@@ -265,17 +265,15 @@ export default function ProductWrapperBottSec({allReorderTrigger, bagsReorderTri
     const checkSize = () => {
       if (window.innerWidth >= 768 && window.innerHeight >= 1024) {
         setRows(2)
-        setSwiperKey(prev => prev + 1)
       } else if (window.innerWidth >= 768 && window.innerHeight < 1024) {
         setRows(1)
-        setSwiperKey(prev => prev + 1)
       } else if (window.innerWidth < 768){
         setRows(5)
-        setSwiperKey(prev => prev + 1)
       } else {
         setRows(1)
-        setSwiperKey(prev => prev + 1)
       }
+
+      setSwiperKey(prev => prev + 1)
     }
 
     checkSize()
